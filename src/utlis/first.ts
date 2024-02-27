@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function first(list: any) {
   if (!Array.isArray(list)) {
     return undefined;
