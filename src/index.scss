@@ -6,6 +6,10 @@ html, body {
   height: 100%;
 }
 
+p {
+  margin: 0;
+}
+
 body {
   font: $font-regular;
   background-color: $text-bgcolor;

@@ -1,18 +1,26 @@
 @import '../../assets/variables';
 
 .link {
-  font: $font-small;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 40px;
-  width: 100%;
-  text-align: center;
-  color: $link-color;
+  position: relative;
   text-decoration: none;
-  cursor: pointer;
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+.link:hover {
+  text-decoration: none;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: currentColor;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.link:hover::after {
+  opacity: 1;
 }

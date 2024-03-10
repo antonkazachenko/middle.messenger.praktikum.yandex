@@ -3,6 +3,16 @@
 .page-title {
   font: $font-big;
   font-size: 40px;
-  margin: 20px 0 40px;
   color: $title-color;
+}
+
+.p-size {
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+.page-subtitle {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
 }
