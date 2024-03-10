@@ -1,7 +1,8 @@
 {{#> Dialog }}
   <form class="login-page">
     <div class="login-page__content">
-      {{> PageTitle title="Вход" }}
+      {{> PageTitle title="Регистрация" }}
+      {{> PageSubtitle title="Уже есть аккаунт?" link="login" linkText="Вход"}}
       {{> InputField className="login-page__input" title="Логин" name="login" }}
       {{> InputField className="login-page__input" title="Пароль" name="password" type="password" }}
     </div>

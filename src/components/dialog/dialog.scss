@@ -3,6 +3,10 @@
 .dialog {
   background: $dialog-bgcolor;
   box-shadow: $dialog-shadow;
-  border-radius: 12px;
-  padding: 30px;
+  border-radius: 5px 0 0 0;
+  padding-left: 132px;
+  padding-top: 110px;
+  width: 70%;
+  height: 97%;
+  box-sizing: border-box;
 }

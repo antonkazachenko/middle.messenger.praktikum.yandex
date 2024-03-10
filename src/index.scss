@@ -11,8 +11,8 @@ body {
   background-color: $text-bgcolor;
   color: $text-color;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 a {

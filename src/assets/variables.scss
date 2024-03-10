@@ -11,13 +11,13 @@ $font-small: #{$font-weight-regular} 12px/12px #{$font-body};
 $font-micro: #{$font-weight-regular} 11px/11px #{$font-body};
 $font-nano: #{$font-weight-regular} 9px/9px #{$font-body};
 
-$text-bgcolor: #FFF;
-$text-color: #000;
+$text-bgcolor: #202020;
+$text-color: #FFF;
 $text-light-color: #999;
 $text-red: #FF0000;
 
 $link-color: #3369f3;
-$title-color: #1E1E1E;
+$title-color: #FFF;
 
 $button-color: #FFF;
 $button-bgcolor: #{$link-color};
@@ -43,7 +43,7 @@ $chat-message-my-bgcolor: #E4EDFD;
 $chat-message-my-color: #{$chat-message-color};
 $chat-message-my-time-color: #{$button-bgcolor};
 
-$dialog-bgcolor: #{$text-bgcolor};
+$dialog-bgcolor: #3A3A3A;
 $dialog-shadow: #{$menu-shadow};
 
 $dialog-modal-overlay-bgcolor: #00000066;
