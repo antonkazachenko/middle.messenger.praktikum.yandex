@@ -1,13 +1,20 @@
 {{#> Dialog }}
-  <form class="login-page">
-    <div class="login-page__content">
+  <form class="register-page">
+    <div class="register-page__content">
       {{> PageTitle title="Регистрация" }}
       {{> PageSubtitle title="Уже есть аккаунт?" link="login" linkText="Вход"}}
-      {{> InputField className="login-page__input" title="Логин" name="login" }}
-      {{> InputField className="login-page__input" title="Пароль" name="password" type="password" }}
+      <div class="register-page__two-inputs">
+        {{> InputField className="register-page__input" title="Имя и фамилия" name="name" }}
+        {{> InputField className="register-page__input" title="Номер телефона" name="phone" }}
+      </div>
+      {{> InputField className="register-page__input" title="E-mail" name="email" }}
+      <div class="register-page__two-inputs">
+        {{> InputField className="register-page__input" title="Пароль" name="password" type="password" }}
+        {{> InputField className="register-page__input" title="Повторите пароль" name="password" type="password" }}
+      </div>
     </div>
-    <div class="login-page__footer">
-      {{> Button text="Авторизоваться" page="chat" }}
+    <div class="register-page__footer">
+      {{> Button text="Создать аккаунт" page="chat" }}
     </div>
   </form>
 {{/ Dialog }}

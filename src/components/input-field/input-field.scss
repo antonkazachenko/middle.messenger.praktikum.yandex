@@ -2,7 +2,8 @@
 
 .input-field {
   &__title {
-    font: $font-nano;
-    color: $text-light-color;
+    font: $font-big;
+    color: $text-color;
+    margin-bottom: 15px;
   }
 }

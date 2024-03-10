@@ -1,5 +1,5 @@
-.login-page {
-  width: 280px;
+.register-page {
+  width: 669px;
   height: 390px;
   display: flex;
   flex-direction: column;
@@ -9,6 +9,13 @@
   }
 
   &__input {
-    margin-top: 16px;
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  &__two-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
   }
 }

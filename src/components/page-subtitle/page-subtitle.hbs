@@ -1,6 +1,6 @@
 <p>
   {{title}}
   {{#if link}}
-    <a href="{{link}}" class="page-subtitle__link">{{linkText}}</a>
+    {{> Link page=link text=linkText }}
   {{/if}}
 </p>
