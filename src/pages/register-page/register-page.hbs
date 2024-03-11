@@ -13,10 +13,17 @@
         {{> InputField className="register-page__input" title="Повторите пароль" name="password" type="password" }}
       </div>
     </div>
-    <div class="register-page__content">
+    <div class="register-page__password-note">
       <p>
         Используйте 8 или более символов.
       </p>
+    </div>
+    <div class="register-page__show-password">
+      <label class="control control-checkbox">
+        Показать пароль
+        <input type="checkbox" />
+        <div class="control_indicator"></div>
+      </label>
     </div>
     <div class="register-page__footer">
       {{> Button text="Создать аккаунт" page="chat" }}
