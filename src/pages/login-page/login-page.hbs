@@ -1,12 +1,22 @@
 {{#> Dialog }}
   <form class="login-page">
     <div class="login-page__content">
-      {{> PageTitle title="Вход" }}
+      <div class="login-page__title-margin">
+        {{> PageTitle title="Вход" }}
+      </div>
       {{> InputField className="login-page__input" title="Логин" name="login" }}
       {{> InputField className="login-page__input" title="Пароль" name="password" type="password" }}
     </div>
+    <div class="login-page__show-password">
+      <label class="control control-checkbox">
+        Показать пароль
+        <input type="checkbox" />
+        <div class="control_indicator"></div>
+      </label>
+    </div>
     <div class="login-page__footer">
       {{> Button text="Авторизоваться" page="chat" }}
+      {{> PageSubtitle title="Нет аккаунта?" link="login" linkText="Cоздать аккаунт"}}
     </div>
   </form>
 {{/ Dialog }}
