@@ -1,22 +1,22 @@
-{{#> Dialog }}
-  <form class="login-page">
-    <div class="login-page__content">
-      <div class="login-page__title-margin">
-        {{> PageTitle title="Вход" }}
+{{#> ErrorWrapper }}
+  <form class="error-404">
+    <div class="error-404__content">
+      <div class="error-404__title-margin">
+        {{> PageTitle title="Упсс...." }}
       </div>
-      {{> InputField className="login-page__input" title="Логин" name="login" }}
-      {{> InputField className="login-page__input" title="Пароль" name="password" type="password" }}
+      <div class="error-404__subtitle-margin">
+        {{> PageSubtitle title="Страница не найдена" large=true }}
+      </div>
+      <p class="error-404__paragraph">
+        Этой страницы не существует!
+        Мы предлагаем вам вернуться домой.
+      </p>
     </div>
-    <div class="login-page__show-password">
-      <label class="control control-checkbox">
-        Error 404
-        <input type="checkbox" />
-        <div class="control_indicator"></div>
-      </label>
-    </div>
-    <div class="login-page__footer">
-      {{> Button text="Авторизоваться" page="chat" }}
-      {{> PageSubtitle title="Нет аккаунта?" link="register" linkText="Cоздать аккаунт"}}
+    <div class="error-404__footer">
+      {{> Button text="Вернуться назад" page="chat" }}
     </div>
   </form>
-{{/ Dialog }}
+  <div>
+    <img src="../../assets/error404.svg" alt="error-404" class="error-404__image">
+  </div>
+{{/ ErrorWrapper }}

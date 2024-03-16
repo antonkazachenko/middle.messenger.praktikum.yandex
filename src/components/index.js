@@ -7,3 +7,4 @@ export { InputField } from './input-field';
 export { Link } from './link';
 export { PageTitle } from './page-title';
 export { PageSubtitle } from './page-subtitle';
+export { ErrorWrapper } from './error-wrapper';

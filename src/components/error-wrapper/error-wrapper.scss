@@ -1,0 +1,13 @@
+@import '../../assets/variables';
+
+.error-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $dialog-bgcolor;
+  box-shadow: $dialog-shadow;
+  border-radius: 5px 0 0 0;
+  width: 70%;
+  height: 97%;
+  box-sizing: border-box;
+}

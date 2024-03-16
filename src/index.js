@@ -20,7 +20,7 @@ function navigate(page) {
   document.body.innerHTML = handlebarsFunct(args);
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('error-404'));
+document.addEventListener('DOMContentLoaded', () => navigate('error-500'));
 
 document.addEventListener('click', e => {
   const page = e.target.getAttribute('page');
