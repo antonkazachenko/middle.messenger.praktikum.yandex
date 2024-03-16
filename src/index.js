@@ -7,7 +7,8 @@ const pages = {
   'login': [ Pages.LoginPage ],
   'register': [ Pages.RegisterPage ],
   'error-404': [ Pages.Error404 ],
-  'error-500': [ Pages.Error500 ]
+  'error-500': [ Pages.Error500 ],
+  'profile': [ Pages.ProfilePage ],
 };
 
 Object.entries(Components).forEach(([ name, component ]) => {
@@ -20,7 +21,7 @@ function navigate(page) {
   document.body.innerHTML = handlebarsFunct(args);
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('error-500'));
+document.addEventListener('DOMContentLoaded', () => navigate('profile'));
 
 document.addEventListener('click', e => {
   const page = e.target.getAttribute('page');
