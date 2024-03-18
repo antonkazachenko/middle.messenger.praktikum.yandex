@@ -36,7 +36,7 @@ npm install
 ```
 Для запуска сервера разработки:
 ```bash
-npm run dev
+npm run start
 ```
 это запустит сервер разработки Vite на localhost:3000.
 

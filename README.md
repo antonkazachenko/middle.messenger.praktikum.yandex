@@ -32,7 +32,7 @@ npm install
 ```
 To start the development server:
 ```bash
-npm run dev
+npm run start
 ```
 This will launch the Vite development server on localhost:3000. 
 
