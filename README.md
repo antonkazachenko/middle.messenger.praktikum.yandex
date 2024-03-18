@@ -3,6 +3,7 @@
 English | [Русский](README.ru.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/23da39d8-8e18-44dc-a28a-154e72be931f/deploy-status)](https://app.netlify.com/sites/creamlaflare-messenger/deploys)
 [![Node Version](https://img.shields.io/badge/node-%3E%3D12-brightgreen.svg)](https://nodejs.org/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Vite Version](https://img.shields.io/badge/Vite-2.5.0-brightgreen)](https://vitejs.dev/)
