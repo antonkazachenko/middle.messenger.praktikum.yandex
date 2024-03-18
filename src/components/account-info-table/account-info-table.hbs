@@ -1,6 +1,26 @@
-<p class="p-size {{#if large}}large-class{{/if}}">
-  {{title}}
-  {{#if link}}
-    {{> Link page=link text=linkText }}
-  {{/if}}
-</p>
+<div class="account-info-table">
+  <div class="account-info-table__field">
+    <label for="email" class="account-info-table__label">Почта</label>
+    <div id="email" class="account-info-table__value">{{email}}</div>
+  </div>
+  <div class="account-info-table__field">
+    <label for="login" class="account-info-table__label">Логин</label>
+    <div id="login" class="account-info-table__value">{{login}}</div>
+  </div>
+  <div class="account-info-table__field">
+    <label for="firstName" class="account-info-table__label">Имя</label>
+    <div id="firstName" class="account-info-table__value">{{firstName}}</div>
+  </div>
+  <div class="account-info-table__field">
+    <label for="lastName" class="account-info-table__label">Фамилия</label>
+    <div id="lastName" class="account-info-table__value">{{lastName}}</div>
+  </div>
+  <div class="account-info-table__field">
+    <label for="nickname" class="account-info-table__label">Имя в чате</label>
+    <div id="nickname" class="account-info-table__value">{{nickname}}</div>
+  </div>
+  <div class="account-info-table__field">
+    <label for="phone" class="account-info-table__label">Телефон</label>
+    <div id="phone" class="account-info-table__value">{{phone}}</div>
+  </div>
+</div>

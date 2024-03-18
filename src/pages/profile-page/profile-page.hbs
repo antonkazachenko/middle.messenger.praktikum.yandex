@@ -4,19 +4,11 @@
       <div class="profile-page__title-margin">
         Профиль
       </div>
-      {{> InputField className="profile-page__input" title="Логин" name="login" }}
-      {{> InputField className="profile-page__input" title="Пароль" name="password" type="password" }}
-    </div>
-    <div class="profile-page__show-password">
-      <label class="control control-checkbox">
-        Profile page
-        <input type="checkbox" />
-        <div class="control_indicator"></div>
-      </label>
+      {{> AccountInfoCard name="Иван Иванов" username="ivanivanov" utcOffset="+3" }}
+      {{> AccountInfoTable email="pochta@yandex.ru" login="ivanivanov" firstName="Иван" lastName="Иванов" nickname="ivan" phone="+7 (909) 967 30 30" }}
     </div>
     <div class="profile-page__footer">
-      {{> Button text="Авторизоваться" page="chat" }}
-      {{> PageSubtitle title="Нет аккаунта?" link="register" linkText="Cоздать аккаунт"}}
+      {{> Button text="Изменить данные" }}
     </div>
   </form>
 {{/ Dialog }}
