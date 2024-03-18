@@ -1,0 +1,42 @@
+# middle-frontend-chat
+
+[English](README.md) | Русский
+
+[![Лицензия: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Версия Node](https://img.shields.io/badge/node-%3E%3D12-brightgreen.svg)](https://nodejs.org/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![Версия Vite](https://img.shields.io/badge/Vite-2.5.0-brightgreen)](https://vitejs.dev/)
+[![Версия Handlebars](https://img.shields.io/badge/Handlebars-4.7.7-brightgreen)](https://handlebarsjs.com/)
+[![Версия SCSS](https://img.shields.io/badge/SCSS-1.35.1-brightgreen)](https://sass-lang.com/)
+
+Web Chat — это динамичное веб-приложение для обмена сообщениями, которое позволяет пользователям взаимодействовать друг с другом в реальном времени. Созданное с использованием Vite, Handlebars и SCSS, это приложение предлагает бесперебойный опыт обмена сообщениями с такими функциями, как авторизация, регистрация, функции мессенджера и обновления профилей.
+
+Приложение задеплоено на Netlify. Функция непрерывного развертывания Netlify автоматизирует процесс развертывания, позволяя мгновенно обновлять приложение с каждым новым коммитом в репозиторий.
+
+В текущей реализации, сервер Express используется исключительно для обслуживания статических веб-страниц.
+
+Ознакомьтесь с живой версией здесь: [Web Chat](https://creamlaflare-messenger.netlify.app)
+
+## Установка
+
+Клонируйте репозиторий:
+
+```bash
+git clone https://yourrepositoryurl.com/middle-frontend-chat.git
+cd middle-frontend-chat
+```
+Установите зависимости:
+```bash
+npm install
+```
+Для запуска сервера разработки:
+```bash
+npm run dev
+```
+это запустит сервер разработки Vite на localhost:3000.
+
+## Вклад
+Ваш вклад приветствуется! Не стесняйтесь открывать pull request.
+
+## Лицензия
+Этот проект лицензирован по лицензии MIT - см. файл [LICENSE](LICENSE) для получения дополнительной информации.
