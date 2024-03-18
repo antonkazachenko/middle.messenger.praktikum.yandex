@@ -23,8 +23,8 @@ Check out the live version here: [Web Chat](https://creamlaflare-messenger.netli
 Clone the repository:
 
 ```bash
-git clone https://yourrepositoryurl.com/middle-frontend-chat.git
-cd middle-frontend-chat
+git clone git@github.com:creamlaflare/middle.messenger.praktikum.yandex.git
+cd middle.messenger.praktikum.yandex
 ```
 Install the dependencies:
 ```bash

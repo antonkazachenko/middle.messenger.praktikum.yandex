@@ -27,8 +27,8 @@ Web Chat — это динамичное веб-приложение для об
 Клонируйте репозиторий:
 
 ```bash
-git clone https://yourrepositoryurl.com/middle-frontend-chat.git
-cd middle-frontend-chat
+git clone git@github.com:creamlaflare/middle.messenger.praktikum.yandex.git
+cd middle.messenger.praktikum.yandex
 ```
 Установите зависимости:
 ```bash
