@@ -1,22 +1,31 @@
 @import '../../assets/variables';
 
-.page-title {
-  font: $font-big;
-  font-size: 40px;
-  color: $title-color;
-}
+.account-info-table {
+  color: #FFFFFF;
+  width: 510px;
+  padding: 20px 20px 20px 0;
+  border-radius: 4px;
+  font: $font-title;
 
-.p-size {
-  font-size: 20px;
-}
+    &__field {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #EAEAEA;
+      padding-bottom: 10px;
+    }
 
-.page-subtitle {
-  display: flex;
-  flex-direction: row;
-  margin: 0;
-}
+    &__field:last-child {
+      border-bottom: none;
+    }
 
-.large-class {
-  font: $font-large;
-  font-weight: 400;
+    &__label {
+        margin-right: 10px;
+        white-space: nowrap;
+    }
+
+    &__value {
+        color: #999;
+        text-align: right;
+    }
 }
