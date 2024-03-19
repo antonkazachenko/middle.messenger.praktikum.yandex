@@ -14,12 +14,20 @@ const pages = {
 Object.entries(Components).forEach(([ name, component ]) => {
   Handlebars.registerPartial(name, component);
 });
-
 function navigate(page) {
-  const [ source, args ] = pages[page];
+  const [ source, pageArgs ] = pages[page];
+  const args = page === 'profile' ? {
+    ...pageArgs,
+    menuItems: [
+      { linkText: 'Изменить данные', link: 'edit-data' },
+      { linkText: 'Изменить пароль', link: 'change-password' },
+      { linkText: 'Выйти', link: 'login' }
+    ]
+  } : pageArgs;
   const handlebarsFunct = Handlebars.compile(source);
   document.body.innerHTML = handlebarsFunct(args);
 }
+
 
 document.addEventListener('DOMContentLoaded', () => navigate('profile'));
 

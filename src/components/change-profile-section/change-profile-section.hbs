@@ -1,5 +1,7 @@
 <div class="menu">
   {{#each menuItems}}
-    <a href="{{this.url}}" class="link{{#if this.className}} {{this.className}}{{/if}}" page="{{this.page}}">{{this.text}}</a>
+    <div class="menu__field">
+      {{> Link page=link text=linkText className="menu__link" }}
+    </div>
   {{/each}}
 </div>
