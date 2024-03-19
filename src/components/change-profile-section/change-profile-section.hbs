@@ -1,0 +1,5 @@
+<div class="menu">
+  {{#each menuItems}}
+    <a href="{{this.url}}" class="link{{#if this.className}} {{this.className}}{{/if}}" page="{{this.page}}">{{this.text}}</a>
+  {{/each}}
+</div>

@@ -10,3 +10,4 @@ export { PageSubtitle } from './page-subtitle';
 export { ErrorWrapper } from './error-wrapper';
 export { AccountInfoCard } from './account-info-card';
 export { AccountInfoTable } from './account-info-table';
+export { ChangeProfileSection } from './change-profile-section';
