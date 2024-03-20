@@ -1,0 +1,14 @@
+{{#> Dialog }}
+  <form class="profile-page">
+    <div class="profile-page__content">
+      <div class="profile-page__title-margin">
+        Профиль
+      </div>
+      {{> AccountInfoCard name="Иван Иванов" username="ivanivanov" utcOffset="+3" }}
+      {{> AccountInfoTable }}
+    </div>
+    <div class="profile-page__footer">
+      {{> ChangeProfileSection menuItems=menuItems }}
+    </div>
+  </form>
+{{/ Dialog }}
