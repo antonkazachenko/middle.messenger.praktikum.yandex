@@ -1,0 +1,54 @@
+@import '../../assets/variables';
+
+.account-info-card {
+  display: flex;
+  align-items: center;
+  color: white;
+  gap: 70px;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 7vh 0;
+
+    &__image-wrapper {
+        position: relative;
+        margin-right: 10px;
+    }
+
+    &__image {
+        width: 88px;
+        height: 88px;
+        background: url("../../assets/Union.svg") center no-repeat ;
+        border-radius: 50%;
+        border: 2px solid #FFFFFF;
+    }
+
+    &__status-icon {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: #44B37F;
+        border: 2px solid #2C2F33;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__name {
+        font: $font-big;
+    }
+
+    &__username {
+        font: $font-big;
+    }
+
+    &__location {
+        color: #B9BBBE;
+        font: $font-title;
+    }
+}

@@ -1,0 +1,22 @@
+{{#> ErrorWrapper }}
+  <form class="error-500">
+    <div class="error-500__content">
+      <div class="error-500__title-margin">
+        {{> PageTitle title="Упсс...." }}
+      </div>
+      <div class="error-500__subtitle-margin">
+        {{> PageSubtitle title="Внутренняя ошибка сервера" large=true }}
+      </div>
+      <p class="error-500__paragraph">
+        Этой страницы не существует!
+        Мы предлагаем вам вернуться домой.
+      </p>
+    </div>
+    <div class="error-500__footer">
+      {{> Button text="Вернуться назад" page="chat" }}
+    </div>
+  </form>
+  <div>
+    <img src="../../assets/error500.svg" alt="error-500" class="error-500__image">
+  </div>
+{{/ ErrorWrapper }}

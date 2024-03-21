@@ -1,0 +1,22 @@
+{{#> ErrorWrapper }}
+  <form class="error-404">
+    <div class="error-404__content">
+      <div class="error-404__title-margin">
+        {{> PageTitle title="Упсс...." }}
+      </div>
+      <div class="error-404__subtitle-margin">
+        {{> PageSubtitle title="Страница не найдена" large=true }}
+      </div>
+      <p class="error-404__paragraph">
+        Этой страницы не существует!
+        Мы предлагаем вам вернуться домой.
+      </p>
+    </div>
+    <div class="error-404__footer">
+      {{> Button text="Вернуться назад" page="chat" }}
+    </div>
+  </form>
+  <div>
+    <img src="../../assets/error404.svg" alt="error-404" class="error-404__image">
+  </div>
+{{/ ErrorWrapper }}

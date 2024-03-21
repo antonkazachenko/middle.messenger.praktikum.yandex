@@ -1,0 +1,30 @@
+{
+  "name": "middle-frontend-chat",
+  "version": "1.0.0",
+  "description": "Middle-Frontend Chat",
+  "license": "ISC",
+  "engines": {
+    "node": ">=12"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "targets": {
+    "default": {
+      "includeNodeModules": true
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "vite --port 3000 --host",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "handlebars": "^4.7.8",
+    "sass": "^1.71.1",
+    "vite": "^5.1.4"
+  },
+  "dependencies": {
+    "express": "^4.18.3"
+  }
+}

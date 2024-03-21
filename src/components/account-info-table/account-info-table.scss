@@ -1,0 +1,31 @@
+@import '../../assets/variables';
+
+.account-info-table {
+  color: #FFFFFF;
+  width: 510px;
+  padding: 20px 20px 20px 0;
+  border-radius: 4px;
+  font: $font-title;
+
+    &__field {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #EAEAEA;
+      padding-bottom: 10px;
+    }
+
+    &__field:last-child {
+      border-bottom: none;
+    }
+
+    &__label {
+        margin-right: 10px;
+        white-space: nowrap;
+    }
+
+    &__value {
+        color: #999;
+        text-align: right;
+    }
+}

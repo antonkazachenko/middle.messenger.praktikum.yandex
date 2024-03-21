@@ -1,0 +1,13 @@
+@import '../../assets/variables';
+
+.button {
+  font: $font-regular;
+  height: 40px;
+  width: 163px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: $button-bgcolor;
+  color: $button-color;
+  border: 0;
+  cursor: pointer;
+}

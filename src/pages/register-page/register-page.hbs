@@ -1,0 +1,36 @@
+{{#> Dialog }}
+  <form class="register-page">
+    <div class="register-page__content">
+      {{> PageTitle title="Регистрация" }}
+      {{> PageSubtitle title="Уже есть аккаунт?" link="login" linkText="Вход"}}
+      <div class="register-page__two-inputs">
+        {{> InputField className="register-page__input" title="Имя" name="first_name" }}
+        {{> InputField className="register-page__input" title="Фамилия" name="second_name" }}
+      </div>
+      <div class="register-page__two-inputs">
+        {{> InputField className="register-page__input" title="Логин" name="login" }}
+        {{> InputField className="register-page__input" title="Номер телефона" name="phone" }}
+      </div>
+      {{> InputField className="register-page__input" title="E-mail" name="email" }}
+      <div class="register-page__two-inputs">
+        {{> InputField className="register-page__input" title="Пароль" name="password" type="password" }}
+        {{> InputField className="register-page__input" title="Повторите пароль" name="password" type="password" }}
+      </div>
+    </div>
+    <div class="register-page__password-note">
+      <p>
+        Используйте 8 или более символов.
+      </p>
+    </div>
+    <div class="register-page__show-password">
+      <label class="control control-checkbox">
+        Показать пароль
+        <input type="checkbox" />
+        <div class="control_indicator"></div>
+      </label>
+    </div>
+    <div class="register-page__footer">
+      {{> Button text="Создать аккаунт" page="chat" }}
+    </div>
+  </form>
+{{/ Dialog }}

@@ -1,0 +1,27 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 510px;
+
+  &__field {
+    color: #0078D4;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #EAEAEA;
+    padding-bottom: 10px;
+  }
+
+  &__field:last-child {
+    border-bottom: none;
+
+    .menu__link {
+      color: red;
+    }
+  }
+
+  &__link {
+    color: #0078D4;
+    cursor: pointer;
+  }
+}

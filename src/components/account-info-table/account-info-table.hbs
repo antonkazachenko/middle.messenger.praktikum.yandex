@@ -1,0 +1,14 @@
+<div class="account-info-table">
+  {{#each fields as |field|}}
+    <div class="account-info-table__field">
+      <label for="{{field.id}}" class="account-info-table__label">{{field.label}}</label>
+      <div id="{{field.id}}" class="account-info-table__value">
+        {{#if field.input}}
+          <input type="text" id="{{field.id}}" name="{{field.name}}" value="{{field.defaultValue}}" />
+        {{else}}
+          {{field.value}}
+        {{/if}}
+      </div>
+    </div>
+  {{/each}}
+</div>
