@@ -10,7 +10,7 @@
 [![Версия Handlebars](https://img.shields.io/badge/Handlebars-4.7.7-brightgreen)](https://handlebarsjs.com/)
 [![Версия SCSS](https://img.shields.io/badge/SCSS-1.35.1-brightgreen)](https://sass-lang.com/)
 
-Для смены страниц необходимо в файле `src/index.js` на строке 24 в функции `navigate` поменять значение на определенную страницу из объекта `pages`.
+Для смены страниц необходимо в файле `src/index.ts` на строке 24 в функции `navigate` поменять значение на определенную страницу из объекта `pages`.
 
 Ccылка чтобы увидеть макеты страниц: [Figma](https://www.figma.com/file/NtGbsAjBjIqx331WIW2m5L/Chat_external_link-(Copy)-(Copy)?type=design&mode=design&t=cmgWGWCVjHQyTQxr-1)
 
