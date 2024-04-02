@@ -177,7 +177,7 @@ class ChatItem extends Block {
  * This component is specifically designed to handle and display a list of
  * ChatItem components.
  */
-class Page2 extends Block {
+export class ChatPage extends Block {
   /**
    * Creates an instance of the Page2 component with specific properties
    * and a list of ChatItem components.
@@ -214,7 +214,4 @@ class Page2 extends Block {
   }
 }
 
-const block = new Page2();
-const container = document.getElementById("app")!;
-console.log(container);
-container.append(block.getContent()!);
+

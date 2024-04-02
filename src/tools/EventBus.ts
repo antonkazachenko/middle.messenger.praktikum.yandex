@@ -12,13 +12,15 @@ export default class EventBus {
     this.listeners = {};
   }
 
-  /* eslint-disable @typescript-eslint/ban-types, @typescript-eslint/no-explicit-any */
+  /* eslint-disable @typescript-eslint/ban-types,
+  @typescript-eslint/no-explicit-any */
 
   /**
    * Registers an event listener for a specified event.
    *
    * @param {string} event - The event name to listen for.
-   * @param {Function} callback - The callback function to execute when the event is emitted.
+   * @param {Function} callback - The callback function to execute when the
+   * event is emitted.
    */
   on(event: string, callback: Function) {
     if (!this.listeners[event]) {
@@ -32,7 +34,8 @@ export default class EventBus {
    * Removes an event listener for a specified event.
    *
    * @param {string} event - The event name to remove the listener from.
-   * @param {Function} callback - The callback function to remove from the event.
+   * @param {Function} callback - The callback function to remove from the
+   * event.
    * @throws {Error} Throws an error if the event does not exist.
    */
   off(event: string, callback: Function) {
@@ -46,7 +49,8 @@ export default class EventBus {
   }
 
   /**
-   * Emits an event, causing all registered listeners for that event to be called.
+   * Emits an event, causing all registered listeners for that event to
+   * be called.
    *
    * @param {string} event - The event to emit.
    * @param {...any} args - Arguments to pass to the event listeners.
@@ -61,6 +65,4 @@ export default class EventBus {
       listener(...args);
     });
   }
-
-  /* eslint-enable @typescript-eslint/ban-types, @typescript-eslint/no-explicit-any */
 }

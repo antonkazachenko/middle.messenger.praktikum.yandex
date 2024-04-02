@@ -2,9 +2,12 @@
 // @ts-nocheck
 import EventBus from "./EventBus";
 import Handlebars from "handlebars";
-/* eslint-disable @typescript-eslint/ban-types, @typescript-eslint/no-explicit-any, valid-jsdoc, @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/ban-types,
+@typescript-eslint/no-explicit-any, valid-jsdoc,
+@typescript-eslint/no-unused-vars */
 /**
- * Represents a generic block component in an application, managing lifecycle events, properties, and rendering.
+ * Represents a generic block component in an application, managing lifecycle
+ * events, properties, and rendering.
  */
 export default class Block {
   static EVENTS = {
@@ -19,7 +22,8 @@ export default class Block {
 
   /**
    * Creates an instance of Block.
-   * @param {Object} propsWithChildren - The initial properties and children of the block.
+   * @param {Object} propsWithChildren - The initial properties and children
+   * of the block.
    */
   constructor(propsWithChildren: object = {}) {
     const eventBus = new EventBus();
@@ -45,7 +49,8 @@ export default class Block {
 
   /**
    * Registers block events with the event bus.
-   * @param {EventBus} eventBus - The event bus to register the block's events with.
+   * @param {EventBus} eventBus - The event bus to register the block's
+   * events with.
    */
   _registerEvents(eventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
@@ -72,7 +77,8 @@ export default class Block {
   }
 
   /**
-   * Placeholder for the componentDidMount lifecycle method which can be overridden.
+   * Placeholder for the componentDidMount lifecycle method which can be
+   * overridden.
    * @param {Object} oldProps - The previous properties of the block.
    */
   componentDidMount(oldProps: object) {}
@@ -101,7 +107,8 @@ export default class Block {
   }
 
   /**
-   * Placeholder for the componentDidUpdate lifecycle method which can be overridden.
+   * Placeholder for the componentDidUpdate lifecycle method which can be
+   * overridden.
    * @param {Object} oldProps - The old properties of the block.
    * @param {Object} newProps - The new properties of the block.
    * @return {boolean} Whether the component should re-render.
@@ -174,9 +181,11 @@ export default class Block {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
 
-    Object.entries(this.lists).forEach(([key, _]) => {
-      propsAndStubs[key] = `<div data-id="__l_${_tmpId}"></div>`;
-    });
+    if (this.lists) {
+      Object.entries(this.lists).forEach(([key, _]) => {
+        propsAndStubs[key] = `<div data-id="__l_${_tmpId}"></div>`;
+      });
+    }
 
     const fragment = this._createDocumentElement("template");
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
@@ -186,18 +195,21 @@ export default class Block {
       stub.replaceWith(child.getContent());
     });
 
-    Object.entries(this.lists).forEach(([, list]) => {
-      const listContainer = this._createDocumentElement("template");
-      list.forEach((item) => {
-        if (item instanceof Block) {
-          listContainer.content.append(item.getContent());
-        } else {
-          listContainer.content.append(`${item}`);
-        }
+    if (this.lists) {
+      Object.entries(this.lists).forEach(([, list]) => {
+        const listContainer = this._createDocumentElement("template");
+        list.forEach((item) => {
+          if (item instanceof Block) {
+            listContainer.content.append(item.getContent());
+          } else {
+            listContainer.content.append(`${item}`);
+          }
+        });
+        const stub = fragment.content
+          .querySelector(`[data-id="__l_${_tmpId}"]`);
+        stub.replaceWith(listContainer.content);
       });
-      const stub = fragment.content.querySelector(`[data-id="__l_${_tmpId}"]`);
-      stub.replaceWith(listContainer.content);
-    });
+    }
 
     const newElement = fragment.content.firstElementChild;
     if (this._element) {
@@ -208,7 +220,8 @@ export default class Block {
   }
 
   /**
-   * Placeholder for the render method, which should be overridden to return HTML content as a string.
+   * Placeholder for the render method, which should be overridden to return
+   * HTML content as a string.
    * @return {string} The HTML content to render.
    */
   render() {}
@@ -226,7 +239,7 @@ export default class Block {
    * @param {Object} props - The initial props object.
    * @return {Proxy} A proxy that surrounds the props.
    */
-  __makePropsProxy(props) {
+  _makePropsProxy(props) {
     return new Proxy(props, {
       get: (target, prop) => {
         const value = target[prop];
