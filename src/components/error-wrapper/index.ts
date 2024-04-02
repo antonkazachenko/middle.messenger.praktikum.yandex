@@ -1,2 +1,2 @@
 import "./error-wrapper.scss";
-export { default as ErrorWrapper } from "./error-wrapper.hbs?raw";
+export {default as ErrorWrapper} from "./error-wrapper.hbs?raw";

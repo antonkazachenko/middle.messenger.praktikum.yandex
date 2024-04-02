@@ -4,7 +4,7 @@
       <label for="{{field.id}}" class="account-info-table__label">{{field.label}}</label>
       <div id="{{field.id}}" class="account-info-table__value">
         {{#if field.input}}
-          <input type="text" id="{{field.id}}" name="{{field.name}}" value="{{field.defaultValue}}" />
+          {{> PageInput id="{{field.id}}" name="{{field.name}}" value="{{field.defaultValue}}" }}
         {{else}}
           {{field.value}}
         {{/if}}

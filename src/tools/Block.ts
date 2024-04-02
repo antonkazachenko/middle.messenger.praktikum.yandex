@@ -23,9 +23,9 @@ export default class Block {
    */
   constructor(propsWithChildren: object = {}) {
     const eventBus = new EventBus();
-    const { props, children, lists } =
+    const {props, children, lists} =
       this._getChildrenPropsAndProps(propsWithChildren);
-    this.props = this._makePropsProxy({ ...props });
+    this.props = this._makePropsProxy({...props});
     this.children = children;
     this.lists = lists;
     this.eventBus = () => eventBus;
@@ -37,7 +37,7 @@ export default class Block {
    * Registers the DOM events listed in the block's properties.
    */
   _addEvents() {
-    const { events = {} } = this.props;
+    const {events = {}} = this.props;
     Object.keys(events).forEach((eventName) => {
       this._element.addEventListener(eventName, events[eventName]);
     });
@@ -130,14 +130,14 @@ export default class Block {
       }
     });
 
-    return { children, props, lists };
+    return {children, props, lists};
   }
 
   /**
    * Adds attributes to the block's root element based on the `attr` property.
    */
   addAttributes() {
-    const { attr = {} } = this.props;
+    const {attr = {}} = this.props;
 
     Object.entries(attr).forEach(([key, value]) => {
       this._element.setAttribute(key, value);
@@ -168,7 +168,7 @@ export default class Block {
    * Renders the block's content, updates the DOM, and binds events.
    */
   _render() {
-    const propsAndStubs = { ...this.props };
+    const propsAndStubs = {...this.props};
     const _tmpId = Math.floor(100000 + Math.random() * 900000);
     Object.entries(this.children).forEach(([key, child]) => {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
@@ -233,7 +233,7 @@ export default class Block {
         return typeof value === "function" ? value.bind(target) : value;
       },
       set: (target, prop, value) => {
-        const oldTarget = { ...target };
+        const oldTarget = {...target};
         target[prop] = value;
         this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
