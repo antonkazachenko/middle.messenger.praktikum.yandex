@@ -50,8 +50,8 @@ class ChatItem extends Block {
    * @param {string} props.name - The name of the user who sent the message.
    * @param {string} props.message - The chat message content.
    */
-  constructor({ ...props }: { name: string; message: string }) {
-    super({ ...props });
+  constructor({...props}: { name: string; message: string }) {
+    super({...props});
   }
 
   /**
@@ -71,12 +71,15 @@ class ChatItem extends Block {
 
 /**
  * Represents a Button component, extending the generic Block component.
- * This component is specifically designed to handle button elements, with a click event listener.
+ * This component is specifically designed to handle button elements, with a
+ * click event listener.
  */
 // class Button extends Block {
 //   /**
-//    * Creates an instance of the Button component with specific properties and event handlers.
-//    * @param {Object} props - The initial properties for the Button component, including event handlers.
+//    * Creates an instance of the Button component with specific properties
+//    and event handlers.
+//    * @param {Object} props - The initial properties for the Button component,
+//    including event handlers.
 //    */
 //   constructor(props) {
 //     super({
@@ -89,7 +92,8 @@ class ChatItem extends Block {
 //
 //   /**
 //    * Renders the HTML content for the Button component.
-//    * The method returns an HTML string representing a button element with dynamic text content.
+//    * The method returns an HTML string representing a button element with
+//    dynamic text content.
 //    * @returns {string} HTML string representing the button element.
 //    */
 //   render() {
@@ -104,10 +108,13 @@ class ChatItem extends Block {
  */
 // class Input extends Block {
 //   /**
-//    * Creates an instance of the Input component with specific properties, event handlers, and attributes.
+//    * Creates an instance of the Input component with specific properties,
+//    event handlers, and attributes.
 //    * @param {Object} props - The initial properties for the Input component.
-//    * @param {Function} props.onChange - The callback function to execute when the value of the input changes.
-//    * @param {Object} [props.attr] - Additional attributes to be added to the input element.
+//    * @param {Function} props.onChange - The callback function to execute
+//    when the value of the input changes.
+//    * @param {Object} [props.attr] - Additional attributes to be added to the
+//    input element.
 //    */
 //   constructor(props) {
 //     super({
@@ -131,7 +138,8 @@ class ChatItem extends Block {
 //   }
 //
 //   /**
-//    * Validates the input value. This method is called when the input loses focus (on blur event).
+//    * Validates the input value. This method is called when the input loses
+//    focus (on blur event).
 //    */
 //   validate() {
 //     console.log("blur");
@@ -166,36 +174,40 @@ class ChatItem extends Block {
 
 /**
  * Represents a Page2 component, extending the generic Block component.
- * This component is specifically designed to handle and display a list of ChatItem components.
+ * This component is specifically designed to handle and display a list of
+ * ChatItem components.
  */
 class Page2 extends Block {
   /**
-   * Creates an instance of the Page2 component with specific properties and a list of ChatItem components.
+   * Creates an instance of the Page2 component with specific properties
+   * and a list of ChatItem components.
    * @param {Object} props - The initial properties for the Page2 component.
    */
   constructor(props: NonNullable<unknown>) {
     super({
       ...props, // {buttonText: 'Button'}
       lists: [
-        new ChatItem({ name: "Samanta Smith", message: "Алло, на!" }),
-        new ChatItem({ name: "John Dow", message: "What?" }),
-        new ChatItem({ name: "John Dow", message: "What?" }),
-        new ChatItem({ name: "John Dow", message: "What?" }),
-        new ChatItem({ name: "John Dow", message: "What?" }),
-        new ChatItem({ name: "John Dow", message: "What?" }),
-        new ChatItem({ name: "John Dow", message: "What?" }),
-        new ChatItem({ name: "John Dow", message: "What?" }),
-        new ChatItem({ name: "John Dow", message: "What?" }),
-        new ChatItem({ name: "John Dow", message: "What?" }),
-        new ChatItem({ name: "John Dow", message: "What?" }),
+        new ChatItem({name: "Samanta Smith", message: "Алло, на!"}),
+        new ChatItem({name: "John Dow", message: "What?"}),
+        new ChatItem({name: "John Dow", message: "What?"}),
+        new ChatItem({name: "John Dow", message: "What?"}),
+        new ChatItem({name: "John Dow", message: "What?"}),
+        new ChatItem({name: "John Dow", message: "What?"}),
+        new ChatItem({name: "John Dow", message: "What?"}),
+        new ChatItem({name: "John Dow", message: "What?"}),
+        new ChatItem({name: "John Dow", message: "What?"}),
+        new ChatItem({name: "John Dow", message: "What?"}),
+        new ChatItem({name: "John Dow", message: "What?"}),
       ],
     });
   }
 
   /**
    * Renders the HTML content for the Page2 component.
-   * The method overrides the render method from the Block class to provide specific HTML for this component.
-   * @return {string} HTML string representing the content of the Page2 component.
+   * The method overrides the render method from the Block class to provide
+   * specific HTML for this component.
+   * @return {string} HTML string representing the content of the Page2
+   * component.
    */
   override render(): string {
     return "<div>{{{ lists }}}</div>";

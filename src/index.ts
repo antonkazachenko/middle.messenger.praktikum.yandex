@@ -1,7 +1,7 @@
 import Handlebars from "handlebars";
 import * as Components from "./components";
 import * as Pages from "./pages";
-import { Page } from "./types";
+import {Page} from "./types";
 
 const pages: Record<Page, [string, PageArgs?]> = {
   [Page.Chat]: [Pages.ChatPage],
@@ -66,41 +66,41 @@ Object.entries(Components).forEach(([name, component]) => {
  */
 function navigate(page: Page) {
   const [source, pageArgs = {}] = pages[page] || [];
-  let args: PageArgs = { ...pageArgs };
+  let args: PageArgs = {...pageArgs};
   switch (page) {
-    case Page.Profile:
+  case Page.Profile:
     args = {
       ...pageArgs,
       menuItems: [
-        { linkText: "Изменить данные", link: "change-data" },
-        { linkText: "Изменить пароль", link: "change-password" },
-          { linkText: "Выйти", link: "login" },
-        ],
+        {linkText: "Изменить данные", link: "change-data"},
+        {linkText: "Изменить пароль", link: "change-password"},
+        {linkText: "Выйти", link: "login"},
+      ],
       fields: [
-          {
+        {
           id: "email",
           label: "Почта",
           value: "user@example.com",
-            input: false,
+          input: false,
         },
         {
           id: "login",
           label: "Логин",
-            value: "user",
+          value: "user",
           input: false,
-          },
+        },
         {
-            id: "first-name",
+          id: "first-name",
           label: "Имя",
           value: "Иван",
           input: false,
-          },
+        },
         {
           id: "second-name",
           label: "Фамилия",
           value: "Иванов",
           input: false,
-          },
+        },
         {
           id: "display-name",
           label: "Имя в чате",
@@ -111,26 +111,26 @@ function navigate(page: Page) {
           id: "phone",
           label: "Телефон",
           value: "+7 (909) 967 30 30",
-            input: false,
+          input: false,
         },
       ],
-      };
+    };
     break;
-    case Page.ChangePassword:
-      args = {
+  case Page.ChangePassword:
+    args = {
       ...pageArgs,
       menuItems: [
-        { linkText: "Изменить данные", link: "change-data" },
-          { linkText: "Изменить пароль", link: "change-password" },
-          { linkText: "Выйти", link: "login" },
+        {linkText: "Изменить данные", link: "change-data"},
+        {linkText: "Изменить пароль", link: "change-password"},
+        {linkText: "Выйти", link: "login"},
       ],
       fields: [
-          {
+        {
           id: "old-password",
           label: "Старый пароль",
-            value: "",
+          value: "",
           name: "oldPassword",
-            input: true,
+          input: true,
         },
         {
           id: "new-password",
@@ -138,7 +138,7 @@ function navigate(page: Page) {
           value: "",
           name: "newPassword",
           input: true,
-          },
+        },
         {
           id: "new-password-again",
           label: "Повторите новый пароль",
@@ -147,43 +147,43 @@ function navigate(page: Page) {
         },
       ],
     };
-      break;
-    case Page.ChangeData:
-      args = {
+    break;
+  case Page.ChangeData:
+    args = {
       ...pageArgs,
       menuItems: [
-        { linkText: "Изменить данные", link: "change-data" },
-        { linkText: "Изменить пароль", link: "change-password" },
-          { linkText: "Выйти", link: "login" },
-        ],
+        {linkText: "Изменить данные", link: "change-data"},
+        {linkText: "Изменить пароль", link: "change-password"},
+        {linkText: "Выйти", link: "login"},
+      ],
       fields: [
-          {
+        {
           id: "email",
           label: "Почта",
           value: "example@example.com",
-            name: "email",
+          name: "email",
           input: true,
-          },
+        },
         {
           id: "login",
           label: "Логин",
           value: "example",
-            name: "login",
+          name: "login",
           input: true,
-          },
+        },
         {
           id: "first-name",
           label: "Имя",
           value: "Иван",
           name: "first_name",
           input: true,
-          },
+        },
         {
           id: "second-name",
           label: "Фамилия",
-            value: "Иванов",
+          value: "Иванов",
           name: "second_name",
-            input: true,
+          input: true,
         },
         {
           id: "display-name",
@@ -191,12 +191,12 @@ function navigate(page: Page) {
           value: "Иван",
           name: "display_name",
           input: true,
-          },
+        },
         {
           id: "phone",
           label: "Телефон",
           value: "+7 (909) 967 30 30",
-            name: "phone",
+          name: "phone",
           input: true,
         },
       ],
