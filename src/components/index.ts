@@ -12,3 +12,5 @@ export {AccountInfoCard} from "./account-info-card";
 export {AccountInfoTable} from "./account-info-table";
 export {ChangeProfileSection} from "./change-profile-section";
 export {PageInput} from "./profile-input";
+export {ArrowIcon} from "./arrow-icon";
+export {ChatSearchInput} from "./chat-search-input";

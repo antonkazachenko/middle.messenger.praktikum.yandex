@@ -62,10 +62,24 @@ class ChatItem extends Block {
    */
   render() {
     return `
-      <div>
-        <div>{{ name }}</div>
-        <div>{{ message }}</div>
-      </div>`;
+       <div class="chat-item">
+        <div class="chat-item__line"></div>
+        <div class="chat-item__block{{#if current}}
+        chat-item__block--current{{/if}}">
+          {{#if avatar}}
+          <div>
+            <img alt="User profile picture" class="chat-item__avatar"
+            src={{ avatar }} />
+          </div>
+          {{else }}
+          <div class="chat-item__avatar"></div>
+          {{/if}}
+          <div class="chat-item__message">
+           <span class="chat-item__message-text">{{ message }}</span>
+          </div>
+        </div>
+      </div>
+`;
   }
 }
 

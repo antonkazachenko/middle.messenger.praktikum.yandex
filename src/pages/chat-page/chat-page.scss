@@ -5,7 +5,32 @@
   width: 100%;
   display: grid;
 
-    &__list {
-      border-right: 1px solid $divider-line-color;
+    &__messages {
+      width: 28vw;
+
+      &-list {
+        border-right: 1px solid $divider-line-color;
+        background-color: $text-bgcolor;
+      }
+
+      &-profile {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 8px;
+        height: 8vh;
+
+        &-title {
+          margin-bottom: 1px;
+        }
+
+        &-text {
+          margin: 0;
+        }
+      }
+
+      &-profile-input {
+        padding: 8px 16px;
+      }
     }
 }

@@ -17,7 +17,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "vite --port 3000 --host",
+    "prebuild": "tsc --noEmit",
     "build": "vite build",
+    "lint:eslint": "eslint .",
+    "lint:eslint:fix": "eslint . --fix",
     "lint:css": "stylelint '**/*.{css,scss}'",
     "lint:css:fix": "stylelint '**/*.{css,scss}' --fix"
   },

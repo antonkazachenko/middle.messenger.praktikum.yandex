@@ -2,7 +2,7 @@ import Handlebars from "handlebars";
 import * as Components from "./components";
 import * as Pages from "./pages";
 import {Page} from "./types";
-import {ChatPage} from "./main";
+// import {ChatPage} from "./main";
 
 const pages: Record<Page, [string, PageArgs?]> = {
   [Page.Chat]: [Pages.ChatPage],
@@ -68,8 +68,8 @@ Object.entries(Components).forEach(([name, component]) => {
 function navigate(page: Page) {
   const [source, pageArgs = {}] = pages[page] || [];
   let args: PageArgs = {...pageArgs};
-  let block;
-  let container;
+  // let block;
+  // let container;
   switch (page) {
   case Page.Profile:
     args = {
@@ -208,14 +208,14 @@ function navigate(page: Page) {
   }
   const handlebarsFunct = Handlebars.compile(source);
   document.body.innerHTML = handlebarsFunct(args);
-  if (page === Page.Chat) {
-    block = new ChatPage({});
-    container = document.querySelector(".chat-page");
-    if (!container) {
-      throw new Error("No chat container found");
-    }
-    container.append(block.getContent()!);
-  }
+  // if (page === Page.Chat) {
+  //   block = new ChatPage({});
+  //   container = document.querySelector(".chat-page");
+  //   if (!container) {
+  //     throw new Error("No chat container found");
+  //   }
+  //   container.append(block.getContent()!);
+  // }
 }
 
 document.addEventListener("DOMContentLoaded", () => navigate(Page.Chat));
