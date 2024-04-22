@@ -1,21 +1,10 @@
 @import '../../assets/variables';
 
 .chat-item {
-  &__line {
-    height: 1px;
-    background: $divider-line-color;
-    margin: 2px 0;
-    padding: 0 10px;
-  }
-
   &__block {
     height: 70px;
     width: 100%;
-    display: grid;
-    grid-template:
-      "a n n" 13px
-      "a m u" 1fr
-      / 47px 1fr 50px;
+    display: flex;
     gap: 0 10px;
     padding: 12px 10px;
     box-sizing: border-box;
@@ -47,6 +36,32 @@
 
   &__message {
     grid-area: m;
+    color: #888;
+    font: $font-regular
+  }
+
+  &__header {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    &-block {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      &-text {
+        color: #FFF;
+        font: $font-title;
+        margin-bottom: 5px;
+      }
+
+      &-time {
+        color: #838383;
+        font: $font-regular
+      }
+    }
   }
 
   &__message-text {
