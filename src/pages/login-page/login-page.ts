@@ -3,21 +3,44 @@ import {InputField, PageTitle} from "../../components";
 
 export default class LoginPage extends Block {
   constructor(props) {
-    super({
-      ...props,
-      PageTitle: new PageTitle({title: "Вход"}),
-      InputLoginField: new InputField({className: "login-page__input", title: "Логин", name: "login", errorText: "Error"}),
-      InputPasswordField: new InputField({className: "login-page__input", title: "Пароль", name: "password", type: "password", errorText: "Error"}),
-    });
+    super(props);
+    this.init();
   }
+
+  init() {
+    const onChangeLoginBind = this.onChangeLogin.bind(this);
+
+    const LoginPageTitle = new PageTitle({title: "Вход", onBlur: onChangeLoginBind});
+    const InputLoginField = new InputField({className: "login-page__input", title: "Логин", name: "login", errorText: "Error"});
+    const InputPasswordField = new InputField({className: "login-page__input", title: "Пароль", name: "password", type: "password", errorText: "Error"});
+
+    this.children = {
+      ...this.children,
+      LoginPageTitle,
+      InputLoginField,
+      InputPasswordField,
+    };
+  }
+
+  onChangeLogin(e) {
+    const inputValue = e.target.value;
+    if (inputValue === "error") {
+      this.children.InputLogin.setProps({error: true, errorText: "some error"});
+      return;
+    } else {
+      this.children.InputLogin.setProps({error: false, errorText: null});
+    }
+
+    // this.setProps({login: inputValue})
+  }
+
 
   render() {
     return `
-      {{#> Dialog }}
         <form class="login-page">
           <div class="login-page__content">
             <div class="login-page__title-margin">
-              {{{ PageTitle }}}
+              {{{ LoginPageTitle }}}
             </div>
             {{{ InputLoginField }}}
             {{{ InputPasswordField }}}
@@ -34,7 +57,6 @@ export default class LoginPage extends Block {
             {{> PageSubtitle title="Нет аккаунта?" link="register" linkText="Cоздать аккаунт"}}
           </div>
         </form>
-      {{/ Dialog }}
     `;
   }
 }

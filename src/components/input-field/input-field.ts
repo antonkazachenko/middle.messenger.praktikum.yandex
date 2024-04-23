@@ -34,7 +34,7 @@ class InputField extends Block {
   render(): string {
     return `
         <div class="input-field{{#if className}} {{ className }}{{/if}} {{#if error}}input-field__error{{/if}}" >
-            <label for={{ name }} class="input-field__title">{{ title }}</label>
+            <div class="input-field__title">{{ title }}</div>
             {{{ Input  }}}
             {{{ ErrorLine }}}
         </div>

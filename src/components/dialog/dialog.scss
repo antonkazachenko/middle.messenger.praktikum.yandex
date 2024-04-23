@@ -10,3 +10,14 @@
   height: 97%;
   box-sizing: border-box;
 }
+
+#app {
+  background: $dialog-bgcolor;
+  box-shadow: $dialog-shadow;
+  border-radius: 5px 0 0;
+  padding-left: 8.8vw;
+  padding-top: 12vh;
+  width: 70%;
+  height: 97%;
+  box-sizing: border-box;
+}
