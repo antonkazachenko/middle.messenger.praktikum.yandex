@@ -1,10 +1,10 @@
 import Handlebars from "handlebars";
 import * as Components from "./components";
 import * as Pages from "./pages";
-import {Page} from "./types";
+import {Page, PageClass} from "./types";
 // import {ChatPage} from "./main";
 
-const pages: Record<Page, [string, PageArgs?]> = {
+const pages: Record<Page, [string | PageClass, PageArgs?]> = {
   [Page.Chat]: [Pages.ChatPage],
   [Page.Login]: [Pages.LoginPage],
   [Page.Register]: [Pages.RegisterPage],
@@ -68,8 +68,6 @@ Object.entries(Components).forEach(([name, component]) => {
 function navigate(page: Page) {
   const [source, pageArgs = {}] = pages[page] || [];
   let args: PageArgs = {...pageArgs};
-  // let block;
-  // let container;
   switch (page) {
   case Page.Profile:
     args = {
@@ -206,6 +204,17 @@ function navigate(page: Page) {
     };
     break;
   }
+
+  const container = document.getElementById("app")!;
+
+  if (source instanceof Object) {
+    const page = new source(pageArgs);
+    container.innerHTML = "";
+    container.append(page.getContent());
+    // page.dispatchComponentDidMount();
+    return;
+  }
+
   const handlebarsFunct = Handlebars.compile(source);
   document.body.innerHTML = handlebarsFunct(args);
   // if (page === Page.Chat) {
@@ -218,7 +227,7 @@ function navigate(page: Page) {
   // }
 }
 
-document.addEventListener("DOMContentLoaded", () => navigate(Page.Chat));
+document.addEventListener("DOMContentLoaded", () => navigate(Page.Login));
 
 document.addEventListener("click", (e) => {
   const target = e.target as HTMLElement;

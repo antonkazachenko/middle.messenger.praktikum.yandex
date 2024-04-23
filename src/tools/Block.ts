@@ -230,7 +230,7 @@ export default class Block {
    * Retrieves the content of the block, which is its root element.
    * @return {HTMLElement} The root element of the block.
    */
-  getContent() {
+  getContent(): string | Node {
     return this.element;
   }
 
