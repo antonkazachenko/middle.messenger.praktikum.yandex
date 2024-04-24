@@ -17,8 +17,6 @@ export default class LoginPage extends Block {
       className: "login-page__input",
       title: "Логин",
       name: "login",
-      errorText: "",
-      error: false,
       onBlur: onChangeLoginBind,
     });
     const InputPasswordField = new InputField({

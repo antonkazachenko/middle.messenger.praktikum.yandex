@@ -15,7 +15,10 @@ export default class PageSubtitle extends Block {
   render() {
     return `
       <div class="login-page__page-subtitle">
-        <p class="login-page__page-subtitle-text {{#if large}}large-class{{/if}}">
+        <p
+          class="login-page__page-subtitle-text
+                 {{#if large}}large-class{{/if}}"
+        >
           {{title}}
         </p>
         {{{ Link }}}
