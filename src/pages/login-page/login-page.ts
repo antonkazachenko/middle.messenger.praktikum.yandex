@@ -2,7 +2,6 @@ import Block from "../../tools/Block";
 import {
   Button,
   InputField,
-  Link,
   PageSubtitle,
   PageTitle,
 } from "../../components";
@@ -53,22 +52,33 @@ export default class LoginPage extends Block {
 
   onChangeLogin(e) {
     const inputValue = e.target.value;
-    if (inputValue === "error") {
+    const loginRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/;
+
+    if (!loginRegex.test(inputValue)) {
+      let errorText = "";
+
+      if (inputValue.length < 3 || inputValue.length > 20) {
+        errorText = "Логин должен быть от 3 до 20 символов.";
+      } else if (/^\d+$/.test(inputValue)) {
+        errorText = "Логин не может состоять только из цифр.";
+      } else if (/[^a-zA-Z0-9_-]/.test(inputValue)) {
+        errorText = "Логин может содержать только латинские буквы, цифры, " +
+          "дефисы и нижние подчеркивания.";
+      } else if (!/[a-zA-Z]/.test(inputValue)) {
+        errorText = "Логин должен содержать хотя бы одну латинскую букву.";
+      }
+
       this.children.InputLoginField.setProps({
         error: true,
-        errorText: "some error",
+        errorText: errorText,
       });
-      return;
     } else {
       this.children.InputLoginField.setProps({
         error: false,
-        errorText: null,
+        errorText: "",
       });
     }
-
-    // this.setProps({login: inputValue})
   }
-
 
   render() {
     return `
