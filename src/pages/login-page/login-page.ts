@@ -1,5 +1,11 @@
 import Block from "../../tools/Block";
-import {InputField, PageTitle} from "../../components";
+import {
+  Button,
+  InputField,
+  Link,
+  PageSubtitle,
+  PageTitle,
+} from "../../components";
 
 export default class LoginPage extends Block {
   constructor(props) {
@@ -10,16 +16,42 @@ export default class LoginPage extends Block {
   init() {
     const onChangeLoginBind = this.onChangeLogin.bind(this);
 
-    const LoginPageTitle = new PageTitle({title: "Вход", onBlur: onChangeLoginBind});
-    const InputLoginField = new InputField({className: "login-page__input", title: "Логин", name: "login", errorText: "Error"});
-    const InputPasswordField = new InputField({className: "login-page__input", title: "Пароль", name: "password", type: "password", errorText: "Error"});
+    const LoginPageTitle = new PageTitle({
+      title: "Вход",
+      onBlur: onChangeLoginBind,
+    });
+    const InputLoginField = new InputField({
+      className: "login-page__input",
+      title: "Логин",
+      name: "login", errorText: "Error",
+    });
+    const InputPasswordField = new InputField({
+      className: "login-page__input",
+      title: "Пароль",
+      name: "password",
+      type: "password",
+      errorText: "Error",
+    });
+    const LoginButton = new Button({
+      text: "Авторизоваться",
+      page: "chat",
+    });
+    const LoginPageSubtitle = new PageSubtitle({
+      title: "Нет аккаунта?",
+      link: "register",
+      linkText: "Cоздать аккаунт",
+    });
 
     this.children = {
       ...this.children,
       LoginPageTitle,
       InputLoginField,
       InputPasswordField,
+      LoginButton,
+      LoginPageSubtitle,
     };
+
+    super.init();
   }
 
   onChangeLogin(e) {
@@ -53,8 +85,8 @@ export default class LoginPage extends Block {
             </label>
           </div>
           <div class="login-page__footer">
-            {{> Button text="Авторизоваться" page="chat" }}
-            {{> PageSubtitle title="Нет аккаунта?" link="register" linkText="Cоздать аккаунт"}}
+            {{{ LoginButton }}}
+            {{{ LoginPageSubtitle }}}
           </div>
         </form>
     `;

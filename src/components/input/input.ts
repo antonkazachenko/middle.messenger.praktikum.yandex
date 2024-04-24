@@ -9,7 +9,10 @@ export default class Input extends Block {
     return `
             <input
               class="input__element"
-              type="{{ type }}" title="{{ title }}" name="{{ name }}" value="{{value}}"
+              type="{{ type }}"
+              title="{{ title }}"
+              name="{{ name }}"
+              value="{{value}}"
             />
         `;
   }
