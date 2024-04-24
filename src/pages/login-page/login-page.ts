@@ -18,19 +18,21 @@ export default class LoginPage extends Block {
 
     const LoginPageTitle = new PageTitle({
       title: "Вход",
-      onBlur: onChangeLoginBind,
     });
     const InputLoginField = new InputField({
       className: "login-page__input",
       title: "Логин",
-      name: "login", errorText: "Error",
+      name: "login",
+      errorText: "",
+      error: false,
+      onBlur: onChangeLoginBind,
     });
     const InputPasswordField = new InputField({
       className: "login-page__input",
       title: "Пароль",
       name: "password",
       type: "password",
-      errorText: "Error",
+      errorText: "",
     });
     const LoginButton = new Button({
       text: "Авторизоваться",
@@ -57,10 +59,13 @@ export default class LoginPage extends Block {
   onChangeLogin(e) {
     const inputValue = e.target.value;
     if (inputValue === "error") {
-      this.children.InputLogin.setProps({error: true, errorText: "some error"});
+      this.children.InputLoginField.setProps({
+        error: true,
+        errorText: "some error",
+      });
       return;
     } else {
-      this.children.InputLogin.setProps({error: false, errorText: null});
+      this.children.InputLoginField.setProps({error: false, errorText: null});
     }
 
     // this.setProps({login: inputValue})

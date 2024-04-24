@@ -35,7 +35,7 @@ class InputField extends Block {
     return `
         <div class="input-field{{#if className}} {{ className }}{{/if}} {{#if error}}input-field__error{{/if}}" >
             <div class="input-field__title">{{ title }}</div>
-            {{{ Input  }}}
+            {{{ Input }}}
             {{{ ErrorLine }}}
         </div>
     `;
