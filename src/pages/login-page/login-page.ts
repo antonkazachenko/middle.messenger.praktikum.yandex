@@ -63,6 +63,7 @@ export default class LoginPage extends Block {
         error: true,
         errorText: "some error",
       });
+      this._render();
       return;
     } else {
       this.children.InputLoginField.setProps({error: false, errorText: null});
