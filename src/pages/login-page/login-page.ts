@@ -8,11 +8,6 @@ import {
 } from "../../components";
 
 export default class LoginPage extends Block {
-  constructor(props) {
-    super(props);
-    this.init();
-  }
-
   init() {
     const onChangeLoginBind = this.onChangeLogin.bind(this);
 
@@ -63,10 +58,12 @@ export default class LoginPage extends Block {
         error: true,
         errorText: "some error",
       });
-      this._render();
       return;
     } else {
-      this.children.InputLoginField.setProps({error: false, errorText: null});
+      this.children.InputLoginField.setProps({
+        error: false,
+        errorText: null,
+      });
     }
 
     // this.setProps({login: inputValue})
