@@ -14,7 +14,7 @@ class InputField extends Block {
         title: props.title,
         name: props.name,
         value: props?.value,
-        className: props.className,
+        className: props.inputClassName,
       }),
       ErrorLine: new ErrorLine({
         errorText: props.errorText,

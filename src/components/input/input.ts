@@ -8,7 +8,7 @@ export default class Input extends Block {
   render(): string {
     return `
             <input
-              class="input__element"
+              class="{{ className }}"
               type="{{ type }}"
               title="{{ title }}"
               name="{{ name }}"

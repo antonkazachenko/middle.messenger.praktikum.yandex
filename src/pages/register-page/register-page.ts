@@ -15,6 +15,7 @@ export default class RegisterPage extends Block {
     });
 
     const FirstNameInputField = new InputField({
+      inputClassName: "input__element",
       className: "register-page__input",
       title: "Имя",
       name: "first_name",
@@ -22,6 +23,7 @@ export default class RegisterPage extends Block {
     });
 
     const LastNameInputField = new InputField({
+      inputClassName: "input__element",
       className: "register-page__input",
       title: "Фамилия",
       name: "second_name",
@@ -29,6 +31,7 @@ export default class RegisterPage extends Block {
     });
 
     const EmailInputField = new InputField({
+      inputClassName: "input__element",
       className: "register-page__input",
       title: "E-mail",
       name: "email",
@@ -36,6 +39,7 @@ export default class RegisterPage extends Block {
     });
 
     const LoginInputField = new InputField({
+      inputClassName: "input__element",
       className: "register-page__input",
       title: "Логин",
       name: "login",
@@ -43,6 +47,7 @@ export default class RegisterPage extends Block {
     });
 
     const PasswordInputField = new InputField({
+      inputClassName: "input__element",
       className: "register-page__input",
       title: "Пароль",
       name: "password",
@@ -50,12 +55,14 @@ export default class RegisterPage extends Block {
     });
 
     const RepeatPasswordInputField = new InputField({
+      inputClassName: "input__element",
       className: "register-page__input",
       title: "Повторите пароль",
       name: "password",
     });
 
     const PhoneInputField = new InputField({
+      inputClassName: "input__element",
       className: "register-page__input",
       title: "Номер телефона",
       name: "phone",
@@ -90,16 +97,194 @@ export default class RegisterPage extends Block {
     super.init();
   }
 
-  onChangeFirstName(e) {}
-  onChangeLastName(e) {}
-  onChangeEmail(e) {}
-  onChangePassword(e) {}
-  onChangePhone(e) {}
+  onChangeFirstName(e) {
+    const inputValue = e.target.value;
+    const nameRegex = /^[A-ZА-Я][a-zA-Zа-яА-Я-]*$/;
+
+    if (inputValue === "") {
+      this.children.FirstNameInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    } else if (!nameRegex.test(inputValue)) {
+      let errorText = "";
+
+      if (!/^[A-ZА-Я]/.test(inputValue)) {
+        errorText = "Имя должно начинаться с заглавной буквы.";
+      } else if (/\d/.test(inputValue)) {
+        errorText = "Имя не может содержать цифры.";
+      } else if (/\s/.test(inputValue)) {
+        errorText = "Имя не может содержать пробелы.";
+      } else if (/[^a-zA-Zа-яА-Я-]/.test(inputValue)) {
+        errorText = "Имя может содержать только буквы или дефисы.";
+      }
+
+      this.children.FirstNameInputField.setProps({
+        error: true,
+        errorText: errorText,
+      });
+    } else {
+      this.children.FirstNameInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    }
+  }
+
+  onChangeLastName(e) {
+    const inputValue = e.target.value;
+    const nameRegex = /^[A-ZА-Я][a-zA-Zа-яА-Я-]*$/;
+
+    if (inputValue === "") {
+      this.children.LastNameInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    } else if (!nameRegex.test(inputValue)) {
+      let errorText = "";
+
+      if (!/^[A-ZА-Я]/.test(inputValue)) {
+        errorText = "Фамилия должна начинаться с заглавной буквы.";
+      } else if (/\d/.test(inputValue)) {
+        errorText = "Фамилия не может содержать цифры.";
+      } else if (/\s/.test(inputValue)) {
+        errorText = "Фамилия не может содержать пробелы.";
+      } else if (/[^a-zA-Zа-яА-Я-]/.test(inputValue)) {
+        errorText = "Фамилия может содержать только буквы или дефисы.";
+      }
+
+      this.children.LastNameInputField.setProps({
+        error: true,
+        errorText: errorText,
+      });
+    } else {
+      this.children.LastNameInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    }
+  }
+
+  onChangeEmail(e) {
+    const inputValue = e.target.value;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (inputValue === "") {
+      this.children.EmailInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    } else if (!emailRegex.test(inputValue)) {
+      let errorText = "";
+
+      if (!/@/.test(inputValue)) {
+        errorText = "Email должен содержать символ '@'.";
+      } else if (!/\.[a-zA-Z]{2,}/.test(inputValue)) {
+        errorText = "Email должен содержать точку после символа '@' с " +
+          "последующими буквами.";
+      } else if (/^[0-9@.]+$/.test(inputValue)) {
+        errorText = "Email не может состоять только из цифр.";
+      } else if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        .test(inputValue)) {
+        errorText = "Email должен быть корректного формата, с использованием " +
+          "только латинских букв, цифр, точек, дефисов и подчеркиваний.";
+      }
+
+      this.children.EmailInputField.setProps({
+        error: true,
+        errorText: errorText,
+      });
+    } else {
+      this.children.EmailInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    }
+  }
+
+  onChangePhone(e) {
+    const inputValue = e.target.value;
+    const phoneRegex = /^\+?[0-9]{10,15}$/;
+
+    if (inputValue === "") {
+      this.children.PhoneInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    } else if (inputValue === "") {
+      this.children.PhoneInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    } else if (!phoneRegex.test(inputValue)) {
+      let errorText = "";
+
+      if (inputValue.length < 10 || inputValue.length > 15) {
+        errorText = "Номер телефона должен содержать от 10 до 15 цифр.";
+      } else if (!/^\+?[0-9]*$/.test(inputValue)) {
+        errorText = "Номер телефона может начинаться " +
+          "с '+' и должен содержать только цифры.";
+      }
+
+      this.children.PhoneInputField.setProps({
+        error: true,
+        errorText: errorText,
+      });
+    } else {
+      this.children.PhoneInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    }
+  }
+
+  onChangePassword(e) {
+    const inputValue = e.target.value;
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/;
+
+    if (inputValue === "") {
+      this.children.PasswordInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    } else if (inputValue === "") {
+      this.children.PasswordInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    } else if (!passwordRegex.test(inputValue)) {
+      let errorText = "";
+
+      if (inputValue.length < 8 || inputValue.length > 40) {
+        errorText = "Пароль должен быть от 8 до 40 символов.";
+      } else if (!/[A-Z]/.test(inputValue)) {
+        errorText = "Пароль должен содержать хотя бы одну заглавную букву.";
+      } else if (!/\d/.test(inputValue)) {
+        errorText = "Пароль должен содержать хотя бы одну цифру.";
+      }
+
+      this.children.PasswordInputField.setProps({
+        error: true,
+        errorText: errorText,
+      });
+    } else {
+      this.children.PasswordInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    }
+  }
+
   onChangeLogin(e) {
     const inputValue = e.target.value;
     const loginRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/;
 
-    if (!loginRegex.test(inputValue)) {
+    if (inputValue === "") {
+      this.children.LoginInputField.setProps({
+        error: false,
+        errorText: "",
+      });
+    } else if (!loginRegex.test(inputValue)) {
       let errorText = "";
 
       if (inputValue.length < 3 || inputValue.length > 20) {
@@ -113,12 +298,12 @@ export default class RegisterPage extends Block {
         errorText = "Логин должен содержать хотя бы одну латинскую букву.";
       }
 
-      this.children.InputLoginField.setProps({
+      this.children.LoginInputField.setProps({
         error: true,
         errorText: errorText,
       });
     } else {
-      this.children.InputLoginField.setProps({
+      this.children.LoginInputField.setProps({
         error: false,
         errorText: "",
       });
@@ -144,11 +329,6 @@ export default class RegisterPage extends Block {
             {{{ PasswordInputField }}}
             {{{ RepeatPasswordInputField }}}
           </div>
-        </div>
-        <div class="register-page__password-note">
-          <p>
-            Используйте 8 или более символов.
-          </p>
         </div>
         <div class="register-page__show-password">
           <label class="control control-checkbox">

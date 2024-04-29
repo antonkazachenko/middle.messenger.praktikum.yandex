@@ -208,7 +208,7 @@ function navigate(page: Page) {
   const container = document.getElementById("app")!;
 
   if (source instanceof Object) {
-    const page = new source(pageArgs);
+    const page = new source(args);
     container.innerHTML = "";
     container.append(page.getContent());
     // page.dispatchComponentDidMount();
@@ -227,7 +227,7 @@ function navigate(page: Page) {
   // }
 }
 
-document.addEventListener("DOMContentLoaded", () => navigate(Page.Register));
+document.addEventListener("DOMContentLoaded", () => navigate(Page.ChangeData));
 
 document.addEventListener("click", (e) => {
   const target = e.target as HTMLElement;

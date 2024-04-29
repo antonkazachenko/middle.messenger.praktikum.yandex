@@ -14,12 +14,14 @@ export default class LoginPage extends Block {
       title: "Вход",
     });
     const InputLoginField = new InputField({
+      inputClassName: "input__element",
       className: "login-page__input",
       title: "Логин",
       name: "login",
       onBlur: onChangeLoginBind,
     });
     const InputPasswordField = new InputField({
+      inputClassName: "input__element",
       className: "login-page__input",
       title: "Пароль",
       name: "password",
