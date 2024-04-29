@@ -12,8 +12,19 @@
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid #EAEAEA;
-      padding-bottom: 10px;
+      padding-bottom: 5px;
+      padding-top: 5px;
       align-items: center;
+
+      &:nth-last-child(3) {
+        border-bottom: none;
+        margin-bottom: 20px;
+      }
+
+      &-error {
+        color: red;
+        margin-bottom: 25px;
+      }
     }
 
     &__field:last-child {

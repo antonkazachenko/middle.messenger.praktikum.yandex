@@ -1,5 +1,5 @@
 import Block from "../../tools/Block";
-import {AccountInfoCard, AccountInfoTable} from "../../components";
+import {AccountInfoCard, AccountInfoTable, Button} from "../../components";
 
 export default class ChangeDataPage extends Block {
   init() {
@@ -22,7 +22,7 @@ export default class ChangeDataPage extends Block {
 
   render() {
     return `
-          <form class="profile-page">
+          <div class="profile-page">
            <div class="profile-page__content">
              <div class="profile-page__title-margin">
                Профиль
@@ -30,7 +30,7 @@ export default class ChangeDataPage extends Block {
              {{{ AccInfoCard }}}
              {{{ AccInfoTable }}}
            </div>
-         </form>
+         </div>
     `;
   }
 }
