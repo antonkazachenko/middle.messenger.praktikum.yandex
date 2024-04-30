@@ -227,7 +227,7 @@ function navigate(page: Page) {
   // }
 }
 
-document.addEventListener("DOMContentLoaded", () => navigate(Page.Error404));
+document.addEventListener("DOMContentLoaded", () => navigate(Page.Login));
 
 document.addEventListener("click", (e) => {
   const target = e.target as HTMLElement;
