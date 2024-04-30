@@ -10,18 +10,40 @@
     justify-content: space-between;
     border-bottom: 1px solid #EAEAEA;
     padding-bottom: 10px;
-  }
 
-  &__field:last-child {
-    border-bottom: none;
+    &:last-child {
+      border-bottom: none;
 
-    .menu-link {
-      color: red;
+      .menu__link {
+        color: red;
+      }
     }
   }
 
   &__link {
     color: #0078D4;
     cursor: pointer;
+    font-size: 13px;
+    text-decoration: none;
+    position: relative; // Ensure the pseudo-element is positioned relative to the link
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 100%;
+      height: 2px;
+      background-color: currentcolor;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
   }
 }
+

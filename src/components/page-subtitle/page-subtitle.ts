@@ -8,6 +8,7 @@ export default class PageSubtitle extends Block {
       Link: new Link({
         page: props.link,
         text: props.linkText,
+        className: "login-page__page-subtitle-link",
       }),
     });
   }

@@ -227,7 +227,7 @@ function navigate(page: Page) {
   // }
 }
 
-document.addEventListener("DOMContentLoaded", () => navigate(Page.ChangeData));
+document.addEventListener("DOMContentLoaded", () => navigate(Page.Profile));
 
 document.addEventListener("click", (e) => {
   const target = e.target as HTMLElement;

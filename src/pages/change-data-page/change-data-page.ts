@@ -1,5 +1,5 @@
 import Block from "../../tools/Block";
-import {AccountInfoCard, AccountInfoTable, Button} from "../../components";
+import {AccountInfoCard, AccountInfoTable} from "../../components";
 
 export default class ChangeDataPage extends Block {
   init() {
@@ -9,12 +9,12 @@ export default class ChangeDataPage extends Block {
       utcOffset: "+3",
     });
 
-    const AccInfoTable = new AccountInfoTable({});
+    const AccInfoTableInputs = new AccountInfoTable({});
 
     this.children = {
       ...this.children,
       AccInfoCard,
-      AccInfoTable,
+      AccInfoTableInputs,
     };
 
     super.init();
@@ -28,7 +28,7 @@ export default class ChangeDataPage extends Block {
                Профиль
              </div>
              {{{ AccInfoCard }}}
-             {{{ AccInfoTable }}}
+             {{{ AccInfoTableInputs }}}
            </div>
          </div>
     `;

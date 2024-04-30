@@ -292,18 +292,106 @@ export default class AccountInfoTable extends Block {
 
   render(): string {
     return `
-      <form class="account-info-table">
-        {{{ EmailInputField }}}
-        {{{ LoginInputField }}}
-        {{{ FirstNameInputField }}}
-        {{{ LastNameInputField }}}
-        {{{ NickNameInputField }}}
-        {{{ PhoneInputField }}}
+      <div class="account-info-table">
+        {{#if noInput}}
+          <div class="account-info-table__field">
+            <label
+              for="email"
+              class="account-info-table__label"
+            >
+              E-mail
+            </label>
+            <div id="email" class="account-info-table__value">
+              ivanov@mail.ru
+            </div>
+          </div>
+        {{else}}
+          {{{ EmailInputField }}}
+        {{/if}}
+        {{#if noInput}}
+          <div class="account-info-table__field">
+            <label
+              for="login"
+              class="account-info-table__label"
+            >
+              Логин
+            </label>
+            <div id="login" class="account-info-table__value">
+              ivanivanov
+            </div>
+          </div>
+        {{else}}
+          {{{ LoginInputField }}}
+        {{/if}}
+        {{#if noInput}}
+          <div class="account-info-table__field">
+            <label
+              for="first_name"
+              class="account-info-table__label"
+            >
+              Имя
+            </label>
+            <div id="first_name" class="account-info-table__value">
+              Иван
+            </div>
+          </div>
+        {{else}}
+          {{{ FirstNameInputField }}}
+        {{/if}}
+        {{#if noInput}}
+          <div class="account-info-table__field">
+            <label
+              for="last_name"
+              class="account-info-table__label"
+            >
+              Фамилия
+            </label>
+            <div id="last_name" class="account-info-table__value">
+              Иванов
+            </div>
+          </div>
+        {{else}}
+          {{{ LastNameInputField }}}
+        {{/if}}
+        {{#if noInput}}
+          <div class="account-info-table__field">
+            <label
+              for="nickname"
+              class="account-info-table__label"
+            >
+              Имя в чате
+            </label>
+            <div id="nickname" class="account-info-table__value">
+              Иван
+            </div>
+          </div>
+        {{else}}
+          {{{ NickNameInputField }}}
+        {{/if}}
+        {{#if noInput}}
+          <div class="account-info-table__field">
+            <label
+              for="phone"
+              class="account-info-table__label"
+            >
+              Телефон
+            </label>
+            <div id="phone" class="account-info-table__value">
+              +7 (999) 999-99-99
+            </div>
+          </div>
+        {{else}}
+          {{{ PhoneInputField }}}
+        {{/if}}
         <div class="{{#if error}}account-info-table__field-error{{/if}}">
           {{{ TableErrorLine }}}
         </div>
-        {{{ SaveButton }}}
-      </form>
+        {{#if noButton}}
+          <div></div>
+        {{else}}
+          {{{ SaveButton }}}
+        {{/if}}
+      </div>
     `;
   }
 }

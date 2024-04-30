@@ -9,7 +9,7 @@ export default class Link extends Block {
     return `
       <a
         href="{{ url }}"
-        class="login-page__page-subtitle-link{{#if className}} {{className}}{{/if}}"
+        class="{{className}}"
         page="{{ page }}"
       >
         {{ text }}
