@@ -227,7 +227,7 @@ function navigate(page: Page) {
   // }
 }
 
-document.addEventListener("DOMContentLoaded", () => navigate(Page.ChangePassword));
+document.addEventListener("DOMContentLoaded", () => navigate(Page.Chat));
 
 document.addEventListener("click", (e) => {
   const target = e.target as HTMLElement;
@@ -236,5 +236,14 @@ document.addEventListener("click", (e) => {
     navigate(page);
     e.preventDefault();
     e.stopImmediatePropagation();
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const app = document.getElementById("app")!;
+  const chatPage = app.querySelector(".chat-page");
+
+  if (chatPage) {
+    app.classList.add("has-chat-page");
   }
 });

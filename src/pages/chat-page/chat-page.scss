@@ -5,68 +5,74 @@
   width: 100%;
   display: flex;
 
-    &__messages {
-      width: 27vw;
+  &__messages {
+    width: 27vw;
 
-      &-list {
-        background-color: $text-bgcolor;
-      }
-
-      &-list::-webkit-scrollbar {
-        width: 8px; /* Width of the scrollbar */
-      }
-
-      &-list::-webkit-scrollbar-thumb {
-        background-color: rgb(255 255 255 / 53%); /* Color of the thumb */
-        border-radius: 0; /* No border radius for a square thumb */
-        border: 3px solid transparent; /* Transparent border */
-        background-clip: content-box; /* Prevents background color from leaking into the border */
-      }
-
-
-      &-profile {
-        display: flex;
-        align-items: center;
-        justify-content: end;
-        gap: 8px;
-        height: 7vh;
-        padding-right: 11px;
-
-        &-title {
-          margin-bottom: 1px;
-        }
-
-        &-text {
-          margin: 0;
-        }
-      }
-
-      &-profile-input {
-        margin: 0 16px 12px;
-        display: flex;
-        border-radius: 3px;
-        border: 1px solid rgb(255 255 255 / 8%);
-        background: rgb(255 255 255 / 6%);
-      }
+    &-list {
+      background-color: $text-bgcolor;
     }
 
-    &__main {
-      background: rgb(58 58 58 / 30%);
-      width: 100%;
+    &-list::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &-list::-webkit-scrollbar-thumb {
+      background-color: rgb(255 255 255 / 53%);
+      border-radius: 0;
+      border: 3px solid transparent;
+      background-clip: content-box;
+    }
+
+    &-profile {
       display: flex;
-      justify-content: center;
       align-items: center;
-
-      &-stub {
-        padding: 11px;
-        border-radius: 17px;
-        background: rgb(255 255 255 / 18%);
-        backdrop-filter: blur(5px);
-      }
-
-      &-text {
-        font: $font-regular;
-        color: #FFF;
-      }
+      justify-content: end;
+      gap: 8px;
+      height: 7vh;
+      padding-right: 11px;
     }
+
+    &-profile-input {
+      margin: 0 16px 12px;
+      display: flex;
+      border-radius: 3px;
+      border: 1px solid rgb(255 255 255 / 8%);
+      background: rgb(255 255 255 / 6%);
+    }
+  }
+
+  &__main {
+    background: rgb(58 58 58 / 30%);
+    width: 73vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; // This ensures the stub and input are spaced out fully
+    align-items: center;
+    position: relative;
+
+    &-stub {
+      padding: 11px;
+      border-radius: 17px;
+      background: rgb(255 255 255 / 18%);
+      backdrop-filter: blur(5px);
+      margin: auto 0; // Ensures vertical centering
+    }
+
+    &-text {
+      font: $font-regular;
+      color: #FFF;
+    }
+
+    & input {
+      width: 80%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      position: absolute;
+      bottom: 20px;
+      left: 50%; // Horizontally center the input
+      transform: translateX(-50%); // Correct the position offset caused by left: 50%
+    }
+  }
 }
