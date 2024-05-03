@@ -98,7 +98,10 @@ export default class RegisterPage extends Block {
   validateName(inputValue) {
     const nameRegex = /^[A-ZА-Я][a-zA-Zа-яА-Я-]*$/;
     if (!inputValue) return "Это поле обязательно.";
-    if (!nameRegex.test(inputValue)) return "Имя должно начинаться с заглавной буквы и может содержать только буквы или дефисы.";
+    if (!nameRegex.test(inputValue)) {
+      return "Имя должно начинаться с заглавной буквы " +
+        "и может содержать только буквы или дефисы.";
+    }
     return "";
   }
 
@@ -130,7 +133,9 @@ export default class RegisterPage extends Block {
   validatePhone(inputValue) {
     const phoneRegex = /^\+?[0-9]{10,15}$/;
     if (!inputValue) return "Это поле обязательно.";
-    if (!phoneRegex.test(inputValue)) return "Номер телефона должен содержать от 10 до 15 цифр.";
+    if (!phoneRegex.test(inputValue)) {
+      return "Номер телефона должен содержать от 10 до 15 цифр.";
+    }
     return "";
   }
 
@@ -146,7 +151,10 @@ export default class RegisterPage extends Block {
   validatePassword(inputValue) {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/;
     if (!inputValue) return "Это поле обязательно.";
-    if (!passwordRegex.test(inputValue)) return "Пароль должен содержать минимум 8 символов, включая одну заглавную букву и цифру.";
+    if (!passwordRegex.test(inputValue)) {
+      return "Пароль должен содержать минимум 8 символов, " +
+        "включая одну заглавную букву и цифру.";
+    }
     return "";
   }
 
@@ -162,7 +170,10 @@ export default class RegisterPage extends Block {
   validateLogin(inputValue) {
     const loginRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/;
     if (!inputValue) return "Это поле обязательно.";
-    if (!loginRegex.test(inputValue)) return "Логин должен быть от 3 до 20 символов, может содержать латинские буквы, цифры, дефисы и нижние подчеркивания.";
+    if (!loginRegex.test(inputValue)) {
+      return "Логин должен быть от 3 до 20 символов, может содержать " +
+        "латинские буквы, цифры, дефисы и нижние подчеркивания.";
+    }
     return "";
   }
 

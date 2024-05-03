@@ -110,8 +110,10 @@ export default class ChangePasswordPage extends Block {
     const formData = new FormData(e.target);
     const data = {};
 
-    const newPasswordError = this.validatePassword(formData.get("new_password"));
-    const repeatPasswordError = this.validatePassword(formData.get("repeat_new_password"));
+    const newPasswordError =
+      this.validatePassword(formData.get("new_password"));
+    const repeatPasswordError =
+      this.validatePassword(formData.get("repeat_new_password"));
 
     if (newPasswordError) {
       this.children.InputNewPassword.setProps({

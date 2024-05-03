@@ -40,7 +40,11 @@ export default class Error404 extends Block {
           </div>
         </div>
         <div>
-          <img src="../../assets/error404.svg" alt="error-404" class="error-404__image">
+          <img
+            src="../../assets/error404.svg"
+            alt="error-404"
+            class="error-404__image"
+          />
         </div>
       </div>
     `;

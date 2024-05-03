@@ -40,7 +40,11 @@ export default class Error500 extends Block {
           </div>
         </div>
         <div>
-          <img src="../../assets/error500.svg" alt="error-500" class="error-500__image">
+          <img
+            src="../../assets/error500.svg"
+            alt="error-500"
+            class="error-500__image"
+          />
         </div>
       </div>
     `;

@@ -190,7 +190,9 @@ export default class AccountInfoTable extends Block {
     if (!inputValue) {
       errorText = "Поле имени в чате обязательное.";
     } else if (!nicknameRegex.test(inputValue)) {
-      errorText = "Имя в чате должно быть от 3 до 20 символов и может содержать латинские или кириллические буквы, цифры, дефисы или подчеркивания.";
+      errorText = "Имя в чате должно быть от 3 до 20 символов и может содержа" +
+        "ть латинские или кириллические буквы, цифры, дефисы" +
+        " или подчеркивания.";
     }
     return errorText;
   }
@@ -204,7 +206,8 @@ export default class AccountInfoTable extends Block {
       if (inputValue.length < 10 || inputValue.length > 15) {
         errorText = "Номер телефона должен содержать от 10 до 15 цифр.";
       } else {
-        errorText = "Номер телефона может начинаться с '+' и должен содержать только цифры.";
+        errorText = "Номер телефона может начинаться с" +
+          " '+' и должен содержать только цифры.";
       }
     }
     return errorText;
@@ -220,7 +223,8 @@ export default class AccountInfoTable extends Block {
       if (!/@/.test(inputValue)) {
         errorText = "Email должен содержать символ '@'.";
       } else if (!/\.[a-zA-Z]{2,}/.test(inputValue)) {
-        errorText = "Email должен содержать точку после символа '@' с последующими буквами.";
+        errorText = "Email должен содержать точку после символа" +
+          " '@' с последующими буквами.";
       } else {
         errorText = "Email должен быть корректного формата.";
       }
@@ -234,7 +238,8 @@ export default class AccountInfoTable extends Block {
     if (!inputValue) {
       errorText = "Поле логина обязательное.";
     } else if (!loginRegex.test(inputValue)) {
-      errorText = "Логин должен быть от 3 до 20 символов и содержать хотя бы одну латинскую букву.";
+      errorText = "Логин должен быть от 3 до 20 символов и содержать" +
+        " хотя бы одну латинскую букву.";
     }
     return errorText;
   }
@@ -259,7 +264,8 @@ export default class AccountInfoTable extends Block {
     errors.nickname = this.validateNickname(data.nickname);
     errors.phone = this.validatePhone(data.phone);
 
-    const isErrorPresent = Object.values(errors).some((errorText) => errorText !== "");
+    const isErrorPresent =
+      Object.values(errors).some((errorText) => errorText !== "");
 
     if (isErrorPresent) {
       this.setProps({error: true});

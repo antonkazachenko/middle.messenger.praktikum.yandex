@@ -64,7 +64,8 @@ export default class LoginPage extends Block {
     } else if (/^\d+$/.test(inputValue)) {
       return "Логин не может состоять только из цифр.";
     } else if (/[^a-zA-Z0-9_-]/.test(inputValue)) {
-      return "Логин может содержать только латинские буквы, цифры, дефисы и нижние подчеркивания.";
+      return "Логин может содержать только латинские буквы, цифры, " +
+        "дефисы и нижние подчеркивания.";
     } else if (!/[a-zA-Z]/.test(inputValue)) {
       return "Логин должен содержать хотя бы одну латинскую букву.";
     } else if (!loginRegex.test(inputValue)) {
@@ -117,7 +118,11 @@ export default class LoginPage extends Block {
           <div class="login-page__show-password">
             <label class="control control-checkbox">
               Показать пароль
-              <input type="checkbox" onchange="this.parentNode.previousSibling.type = this.checked ? 'text' : 'password'" />
+              <input
+                type="checkbox"
+                onchange="this.parentNode.previousSibling.type = this.checked ?
+                'text' : 'password'"
+              />
               <div class="control-indicator"></div>
             </label>
           </div>
