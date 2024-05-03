@@ -18,7 +18,7 @@ export default class ChangeProfileSection extends Block {
       LoginLink: new Link({
         text: "Выйти",
         page: "login",
-        className: "menu__link",
+        className: "menu__link-red",
       }),
     });
   }
