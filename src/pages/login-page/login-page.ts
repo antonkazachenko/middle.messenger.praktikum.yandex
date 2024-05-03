@@ -9,6 +9,13 @@ import {
 export default class LoginPage extends Block {
   init() {
     const onChangeLoginBind = this.onChangeLogin.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+
+    this.props = {
+      events: {
+        submit: this.onSubmit,
+      },
+    };
 
     const LoginPageTitle = new PageTitle({
       title: "Вход",
@@ -26,7 +33,6 @@ export default class LoginPage extends Block {
       title: "Пароль",
       name: "password",
       type: "password",
-      errorText: "",
     });
     const LoginButton = new Button({
       text: "Авторизоваться",
@@ -50,34 +56,52 @@ export default class LoginPage extends Block {
     super.init();
   }
 
-  onChangeLogin(e) {
-    const inputValue = e.target.value;
+  validateLogin(inputValue) {
     const loginRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/;
 
-    if (!loginRegex.test(inputValue)) {
-      let errorText = "";
+    if (inputValue.length < 3 || inputValue.length > 20) {
+      return "Логин должен быть от 3 до 20 символов.";
+    } else if (/^\d+$/.test(inputValue)) {
+      return "Логин не может состоять только из цифр.";
+    } else if (/[^a-zA-Z0-9_-]/.test(inputValue)) {
+      return "Логин может содержать только латинские буквы, цифры, дефисы и нижние подчеркивания.";
+    } else if (!/[a-zA-Z]/.test(inputValue)) {
+      return "Логин должен содержать хотя бы одну латинскую букву.";
+    } else if (!loginRegex.test(inputValue)) {
+      return "Некорректный логин.";
+    }
+    return "";
+  }
 
-      if (inputValue.length < 3 || inputValue.length > 20) {
-        errorText = "Логин должен быть от 3 до 20 символов.";
-      } else if (/^\d+$/.test(inputValue)) {
-        errorText = "Логин не может состоять только из цифр.";
-      } else if (/[^a-zA-Z0-9_-]/.test(inputValue)) {
-        errorText = "Логин может содержать только латинские буквы, цифры, " +
-          "дефисы и нижние подчеркивания.";
-      } else if (!/[a-zA-Z]/.test(inputValue)) {
-        errorText = "Логин должен содержать хотя бы одну латинскую букву.";
-      }
+  onChangeLogin(e) {
+    const errorText = this.validateLogin(e.target.value);
+    this.children.InputLoginField.setProps({
+      error: !!errorText,
+      errorText: errorText,
+    });
+  }
 
+  onSubmit(e) {
+    e.preventDefault();
+    const loginValue = e.target.login.value;
+    const errorText = this.validateLogin(loginValue);
+
+    if (errorText) {
       this.children.InputLoginField.setProps({
         error: true,
         errorText: errorText,
       });
-    } else {
-      this.children.InputLoginField.setProps({
-        error: false,
-        errorText: "",
-      });
+      console.log("Ошибка в форме");
+      return;
     }
+
+    const formData = new FormData(e.target);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+
+    console.log(data);
   }
 
   render() {
@@ -93,7 +117,7 @@ export default class LoginPage extends Block {
           <div class="login-page__show-password">
             <label class="control control-checkbox">
               Показать пароль
-              <input type="checkbox" />
+              <input type="checkbox" onchange="this.parentNode.previousSibling.type = this.checked ? 'text' : 'password'" />
               <div class="control-indicator"></div>
             </label>
           </div>

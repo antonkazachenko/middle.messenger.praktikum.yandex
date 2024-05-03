@@ -14,3 +14,4 @@ export {ChangeProfileSection} from "./change-profile-section";
 export {PageInput} from "./profile-input";
 export {ArrowIcon} from "./arrow-icon";
 export {ChatSearchInput} from "./chat-search-input";
+export {ChatMessageInput} from "./chat-message-input";

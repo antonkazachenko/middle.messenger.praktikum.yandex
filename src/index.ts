@@ -227,15 +227,19 @@ function navigate(page: Page) {
   // }
 }
 
-document.addEventListener("DOMContentLoaded", () => navigate(Page.Chat));
+document.addEventListener("DOMContentLoaded", () => navigate(Page.Register));
 
 document.addEventListener("click", (e) => {
   const target = e.target as HTMLElement;
   const page = target.getAttribute("page") as Page | null;
   if (page) {
-    navigate(page);
-    e.preventDefault();
-    e.stopImmediatePropagation();
+    // navigate(page);
+    const app = document.getElementById("app")!;
+    const chatPage = app.querySelector(".chat-page");
+
+    if (chatPage) {
+      app.classList.add("has-chat-page");
+    }
   }
 });
 

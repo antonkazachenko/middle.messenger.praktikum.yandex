@@ -10,6 +10,7 @@ export default class Button extends Block {
       <button
         class="button{{#if className}} {{className}}{{/if}}"
         page="{{ page }}"
+        type="submit"
       >
         {{ text }}
       </button>
