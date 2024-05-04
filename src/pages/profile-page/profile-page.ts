@@ -5,8 +5,12 @@ import {
   ChangeProfileSection,
 } from "../../components";
 
+type TProfilePageProps = {
+  menuItems: string[];
+};
+
 export default class ProfilePage extends Block {
-  constructor(props) {
+  constructor(props: TProfilePageProps) {
     super({
       ...props,
       AccInfoCard: new AccountInfoCard({

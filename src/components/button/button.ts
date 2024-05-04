@@ -1,7 +1,13 @@
 import Block from "../../tools/Block";
 
+type TButtonProps = {
+  className?: string;
+  text: string;
+  page: string;
+};
+
 export default class Button extends Block {
-  constructor(props) {
+  constructor(props: TButtonProps) {
     super(props);
   }
 

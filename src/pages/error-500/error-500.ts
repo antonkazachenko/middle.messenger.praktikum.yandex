@@ -18,6 +18,8 @@ export default class Error500 extends Block {
       PageSubtitle: new PageSubtitle({
         title: "Что-то пошло не так",
         large: true,
+        link: "chat",
+        linkText: "Назад к чатам",
       }),
       Button: new Button({
         text: "Вернуться назад",

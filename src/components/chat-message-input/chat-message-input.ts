@@ -1,7 +1,14 @@
 import Block from "../../tools/Block";
 
+type TChatMessageInputProps = {
+  defaultValue: string;
+  id: string;
+  name: string;
+  onBlur: (e: Event) => void;
+};
+
 export default class ChatMessageInput extends Block {
-  constructor(props) {
+  constructor(props: TChatMessageInputProps) {
     super({
       ...props,
       events: {
@@ -10,12 +17,11 @@ export default class ChatMessageInput extends Block {
     });
   }
 
-  componentDidUpdate(oldProps, newProps) {
-    if (oldProps === newProps) {
-      return false;
-    }
-
-    return true;
+  componentDidUpdate(
+    oldProps: TChatMessageInputProps,
+    newProps: TChatMessageInputProps,
+  ) {
+    return oldProps !== newProps;
   }
 
   render() {

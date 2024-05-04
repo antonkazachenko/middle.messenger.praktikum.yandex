@@ -1,7 +1,13 @@
 import Block from "../../tools/Block";
 
+type TAccountInfoCardProps = {
+  name: string;
+  username: string;
+  utcOffset: string;
+};
+
 export default class AccountInfoCard extends Block {
-  constructor(props) {
+  constructor(props: TAccountInfoCardProps) {
     super(props);
   }
 

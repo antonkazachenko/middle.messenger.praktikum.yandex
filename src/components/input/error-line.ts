@@ -1,7 +1,11 @@
 import Block from "../../tools/Block";
 
+type TErrorLineProps = {
+  errorText: string;
+};
+
 class ErrorLine extends Block {
-  constructor(props) {
+  constructor(props: TErrorLineProps) {
     super(props);
   }
 

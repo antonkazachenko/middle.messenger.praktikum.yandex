@@ -1,8 +1,14 @@
 import Block from "../../tools/Block";
 import {Link} from "../link";
 
+type TChangeProfileSectionProps = {
+  ChangeDataLink: Link;
+  ChangePasswordLink: Link;
+  LoginLink: Link;
+};
+
 export default class ChangeProfileSection extends Block {
-  constructor(props) {
+  constructor(props: { menuItems: string[] } | TChangeProfileSectionProps) {
     super({
       ...props,
       ChangeDataLink: new Link({
@@ -39,10 +45,3 @@ export default class ChangeProfileSection extends Block {
     `;
   }
 }
-
-
-// menuItems: [
-//         {linkText: "Изменить данные", link: "change-data"},
-//         {linkText: "Изменить пароль", link: "change-password"},
-//         {linkText: "Выйти", link: "login"},
-//       ],

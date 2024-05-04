@@ -1,7 +1,18 @@
 import Block from "../../tools/Block";
 
+type TInputProps = {
+  className: string;
+  type: string;
+  title: string;
+  name: string;
+  value: string;
+  events: {
+    blur: (event: FocusEvent) => void;
+  };
+};
+
 export default class Input extends Block {
-  constructor(props) {
+  constructor(props: TInputProps) {
     super(props);
   }
 

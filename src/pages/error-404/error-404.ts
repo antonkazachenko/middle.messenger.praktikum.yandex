@@ -17,6 +17,8 @@ export default class Error404 extends Block {
       PageSubtitle: new PageSubtitle({
         title: "Страница не найдена",
         large: true,
+        link: "chat",
+        linkText: "Назад к чатам",
       }),
       Button: new Button({
         text: "Вернуться назад",

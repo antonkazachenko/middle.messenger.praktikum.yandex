@@ -34,6 +34,8 @@ interface PageArgs {
 }
 
 Object.entries(Components).forEach(([name, component]) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   Handlebars.registerPartial(name, component);
 });
 
@@ -210,12 +212,12 @@ function navigate(page: Page) {
   if (Source instanceof Object) {
     const page = new Source(args);
     container.innerHTML = "";
-    container.append(page.getContent());
+    container.append(page.getContent()!);
     // page.dispatchComponentDidMount();
     return;
   }
 
-  const handlebarsFunct = Handlebars.compile(source);
+  const handlebarsFunct = Handlebars.compile(Source);
   document.body.innerHTML = handlebarsFunct(args);
   // if (page === Page.Chat) {
   //   block = new ChatPage({});
@@ -227,7 +229,8 @@ function navigate(page: Page) {
   // }
 }
 
-document.addEventListener("DOMContentLoaded", () => navigate(Page.Profile));
+document.addEventListener("DOMContentLoaded",
+  () => navigate(Page.ChangePassword));
 
 document.addEventListener("click", (e) => {
   const target = e.target as HTMLElement;

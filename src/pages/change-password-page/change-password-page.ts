@@ -46,7 +46,6 @@ export default class ChangePasswordPage extends Block {
       SaveButton: new Button({
         className: "button button__margin",
         text: "Сохранить",
-        type: "submit",
         page: "profile",
       }),
       ErrorLine: new ErrorLine({
@@ -57,7 +56,10 @@ export default class ChangePasswordPage extends Block {
     super.init();
   }
 
-  onChangePassword(e, passwordField) {
+  onChangePassword(e: Event, passwordField: Block) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/;
     let errorText = "";
@@ -82,15 +84,15 @@ export default class ChangePasswordPage extends Block {
     }
   }
 
-  onNewPasswordChange(e) {
+  onNewPasswordChange(e: Event) {
     this.onChangePassword(e, this.children.InputNewPassword);
   }
 
-  onRepeatPasswordChange(e) {
+  onRepeatPasswordChange(e: Event) {
     this.onChangePassword(e, this.children.InputPasswordRepeatField);
   }
 
-  validatePassword(inputValue) {
+  validatePassword(inputValue: string) {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/;
     if (!passwordRegex.test(inputValue)) {
       if (inputValue.length < 8 || inputValue.length > 40) {
@@ -104,16 +106,28 @@ export default class ChangePasswordPage extends Block {
     return "";
   }
 
-  onSubmit(e) {
+  onSubmit(e: Event) {
+    if (!(e.target instanceof HTMLFormElement)) {
+      return;
+    }
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    const data = {};
+    const data: {[key: string]: string} = {};
 
-    const newPasswordError =
-      this.validatePassword(formData.get("new_password"));
-    const repeatPasswordError =
-      this.validatePassword(formData.get("repeat_new_password"));
+    const newPassword = formData.get("new_password");
+    const repeatNewPassword = formData.get("repeat_new_password");
+
+    if (typeof newPassword !== "string" ||
+        typeof repeatNewPassword !== "string") {
+      this.children.ErrorLine.setProps({
+        errorText: "Заполните все поля.",
+      });
+      return;
+    }
+
+    const newPasswordError = this.validatePassword(newPassword);
+    const repeatPasswordError = this.validatePassword(repeatNewPassword);
 
     if (newPasswordError) {
       this.children.InputNewPassword.setProps({
@@ -129,12 +143,16 @@ export default class ChangePasswordPage extends Block {
       return;
     }
 
+
     formData.forEach((value, key) => {
-      data[key] = value;
+      if (typeof value === "string") {
+        data[key] = value;
+      }
     });
 
     console.log(data);
   }
+
 
   render() {
     return `

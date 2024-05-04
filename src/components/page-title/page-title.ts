@@ -1,7 +1,11 @@
 import Block from "../../tools/Block";
 
+type TPageTitleProps = {
+  title: string;
+};
+
 export default class PageTitle extends Block {
-  constructor(props) {
+  constructor(props: TPageTitleProps) {
     super(props);
   }
 

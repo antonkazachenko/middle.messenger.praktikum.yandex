@@ -1,7 +1,14 @@
 import Block from "../../tools/Block";
 
+type TLinkProps = {
+  text: string;
+  page: string;
+  className: string;
+  url?: string;
+};
+
 export default class Link extends Block {
-  constructor(props) {
+  constructor(props: TLinkProps) {
     super(props);
   }
 

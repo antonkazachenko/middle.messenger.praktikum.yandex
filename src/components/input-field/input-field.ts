@@ -22,14 +22,14 @@ class InputField extends Block {
         events: {
           blur: props.onBlur || (() => {}),
         },
-        type: props?.type,
+        type: props?.type || "text",
         title: props.title,
         name: props.name,
-        value: props?.value,
-        className: props.inputClassName,
+        value: props?.value || "",
+        className: props.inputClassName || "",
       }),
       ErrorLine: new ErrorLine({
-        errorText: props.errorText,
+        errorText: props.errorText || "",
       }),
     });
   }

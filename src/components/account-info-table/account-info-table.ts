@@ -9,6 +9,26 @@ type TAccountInfoTableProps = {
   error?: boolean;
 };
 
+type TFormFields = {
+  email: string;
+  login: string;
+  first_name: string;
+  last_name: string;
+  nickname: string;
+  phone: string;
+};
+
+interface IFormElements extends HTMLFormElement {
+  elements: HTMLFormControlsCollection & {
+    email: HTMLInputElement;
+    login: HTMLInputElement;
+    first_name: HTMLInputElement;
+    last_name: HTMLInputElement;
+    nickname: HTMLInputElement;
+    phone: HTMLInputElement;
+  }
+}
+
 export default class AccountInfoTable extends Block {
   init() {
     const onChangeEmailBind = this.onEmailChange.bind(this);
@@ -97,43 +117,61 @@ export default class AccountInfoTable extends Block {
 
     super.init();
   }
-  onEmailChange(e) {
+  onEmailChange(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const errorText = this.validateEmail(inputValue);
     this.updateErrorLine(errorText);
   }
 
-  onLoginChange(e) {
+  onLoginChange(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const errorText = this.validateLogin(inputValue);
     this.updateErrorLine(errorText);
   }
 
-  onFirstNameChange(e) {
+  onFirstNameChange(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const errorText = this.validateFirstName(inputValue);
     this.updateErrorLine(errorText);
   }
 
-  onLastNameChange(e) {
+  onLastNameChange(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const errorText = this.validateLastName(inputValue);
     this.updateErrorLine(errorText);
   }
 
-  onNickNameChange(e) {
+  onNickNameChange(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const errorText = this.validateNickname(inputValue);
     this.updateErrorLine(errorText);
   }
 
-  onPhoneChange(e) {
+  onPhoneChange(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const errorText = this.validatePhone(inputValue);
     this.updateErrorLine(errorText);
   }
 
-  updateErrorLine(errorText) {
+  updateErrorLine(errorText: string) {
     const hasError = !!errorText;
     this.setProps({error: hasError});
     this.children.TableErrorLine.setProps({
@@ -155,7 +193,7 @@ export default class AccountInfoTable extends Block {
     return true;
   }
 
-  validateFirstName(inputValue) {
+  validateFirstName(inputValue: string) {
     const nameRegex = /^[A-ZА-Я][a-zA-Zа-яА-Я-]*$/;
     let errorText = "";
     if (!inputValue) {
@@ -174,7 +212,7 @@ export default class AccountInfoTable extends Block {
     return errorText;
   }
 
-  validateLastName(inputValue) {
+  validateLastName(inputValue: string) {
     const nameRegex = /^[A-ZА-Я][a-zA-Zа-яА-Я-]*$/;
     let errorText = "";
     if (!inputValue) {
@@ -193,7 +231,7 @@ export default class AccountInfoTable extends Block {
     return errorText;
   }
 
-  validateNickname(inputValue) {
+  validateNickname(inputValue: string) {
     const nicknameRegex = /^[a-zA-Zа-яА-Я0-9_-]{3,20}$/;
     let errorText = "";
     if (!inputValue) {
@@ -206,7 +244,7 @@ export default class AccountInfoTable extends Block {
     return errorText;
   }
 
-  validatePhone(inputValue) {
+  validatePhone(inputValue: string) {
     const phoneRegex = /^\+?[0-9]{10,15}$/;
     let errorText = "";
     if (!inputValue) {
@@ -223,7 +261,7 @@ export default class AccountInfoTable extends Block {
   }
 
 
-  validateEmail(inputValue) {
+  validateEmail(inputValue: string) {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     let errorText = "";
     if (!inputValue) {
@@ -241,7 +279,7 @@ export default class AccountInfoTable extends Block {
     return errorText;
   }
 
-  validateLogin(inputValue) {
+  validateLogin(inputValue: string) {
     const loginRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/;
     let errorText = "";
     if (!inputValue) {
@@ -253,18 +291,34 @@ export default class AccountInfoTable extends Block {
     return errorText;
   }
 
-  onSubmit(e) {
+  onSubmit(e: Event) {
     e.preventDefault();
-    const data = {};
-    const errors = {};
-
-    const formElements = e.target.elements;
-    data.email = formElements["email"].value;
-    data.login = formElements["login"].value;
-    data.first_name = formElements["first_name"].value;
-    data.last_name = formElements["last_name"].value;
-    data.nickname = formElements["nickname"].value;
-    data.phone = formElements["phone"].value;
+    const data: TFormFields = {
+      email: "",
+      login: "",
+      first_name: "",
+      last_name: "",
+      nickname: "",
+      phone: "",
+    };
+    const errors: TFormFields = {
+      email: "",
+      login: "",
+      first_name: "",
+      last_name: "",
+      nickname: "",
+      phone: "",
+    };
+    if (!(e.target instanceof HTMLFormElement)) {
+      return;
+    }
+    const form = e.target as IFormElements;
+    data.email = form.elements.email.value;
+    data.login = form.elements.login.value;
+    data.first_name = form.elements.first_name.value;
+    data.last_name = form.elements.last_name.value;
+    data.nickname = form.elements.nickname.value;
+    data.phone = form.elements.phone.value;
 
     errors.email = this.validateEmail(data.email);
     errors.login = this.validateLogin(data.login);

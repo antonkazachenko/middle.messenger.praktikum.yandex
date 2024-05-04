@@ -56,7 +56,7 @@ export default class LoginPage extends Block {
     super.init();
   }
 
-  validateLogin(inputValue) {
+  validateLogin(inputValue: string) {
     const loginRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/;
 
     if (inputValue.length < 3 || inputValue.length > 20) {
@@ -74,7 +74,10 @@ export default class LoginPage extends Block {
     return "";
   }
 
-  onChangeLogin(e) {
+  onChangeLogin(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const errorText = this.validateLogin(e.target.value);
     this.children.InputLoginField.setProps({
       error: !!errorText,
@@ -82,28 +85,39 @@ export default class LoginPage extends Block {
     });
   }
 
-  onSubmit(e) {
+  onSubmit(e: Event) {
     e.preventDefault();
-    const loginValue = e.target.login.value;
-    const errorText = this.validateLogin(loginValue);
 
-    if (errorText) {
-      this.children.InputLoginField.setProps({
-        error: true,
-        errorText: errorText,
-      });
-      console.log("Ошибка в форме");
+    if (!(e.target instanceof HTMLFormElement)) {
+      console.error("Event target is not a form element.");
       return;
     }
 
     const formData = new FormData(e.target);
-    const data = {};
+    const data: {[key: string]: FormDataEntryValue} = {};
+
     formData.forEach((value, key) => {
       data[key] = value;
     });
 
-    console.log(data);
+    const loginField = e.target.elements.namedItem("login") as HTMLInputElement;
+    if (loginField) {
+      const loginValue = loginField.value;
+      const errorText = this.validateLogin(loginValue);
+
+      if (errorText) {
+        this.children.InputLoginField.setProps({
+          error: true,
+          errorText: errorText,
+        });
+        console.log("Ошибка в форме");
+        return;
+      }
+    }
+
+    console.log("Form Data:", data);
   }
+
 
   render() {
     return `

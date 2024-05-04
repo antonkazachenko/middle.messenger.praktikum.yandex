@@ -1,6 +1,7 @@
 import Block from "../../tools/Block";
 import {Button, InputField, PageSubtitle, PageTitle} from "../../components";
 
+
 export default class RegisterPage extends Block {
   init() {
     this.onSubmit = this.onSubmit.bind(this);
@@ -77,7 +78,10 @@ export default class RegisterPage extends Block {
     super.init();
   }
 
-  onChangeFirstName(e) {
+  onChangeFirstName(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const errorText = this.validateName(inputValue);
     this.children.FirstNameInputField.setProps({
@@ -86,7 +90,10 @@ export default class RegisterPage extends Block {
     });
   }
 
-  onChangeLastName(e) {
+  onChangeLastName(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const errorText = this.validateName(inputValue);
     this.children.LastNameInputField.setProps({
@@ -95,7 +102,7 @@ export default class RegisterPage extends Block {
     });
   }
 
-  validateName(inputValue) {
+  validateName(inputValue: string) {
     const nameRegex = /^[A-ZА-Я][a-zA-Zа-яА-Я-]*$/;
     if (!inputValue) return "Это поле обязательно.";
     if (!nameRegex.test(inputValue)) {
@@ -105,7 +112,10 @@ export default class RegisterPage extends Block {
     return "";
   }
 
-  onChangeEmail(e) {
+  onChangeEmail(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const errorText = this.validateEmail(inputValue);
     this.children.EmailInputField.setProps({
@@ -114,14 +124,17 @@ export default class RegisterPage extends Block {
     });
   }
 
-  validateEmail(inputValue) {
+  validateEmail(inputValue: string) {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!inputValue) return "Это поле обязательно.";
     if (!emailRegex.test(inputValue)) return "Некорректный формат email.";
     return "";
   }
 
-  onChangePhone(e) {
+  onChangePhone(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const errorText = this.validatePhone(inputValue);
     this.children.PhoneInputField.setProps({
@@ -130,7 +143,7 @@ export default class RegisterPage extends Block {
     });
   }
 
-  validatePhone(inputValue) {
+  validatePhone(inputValue: string) {
     const phoneRegex = /^\+?[0-9]{10,15}$/;
     if (!inputValue) return "Это поле обязательно.";
     if (!phoneRegex.test(inputValue)) {
@@ -139,7 +152,10 @@ export default class RegisterPage extends Block {
     return "";
   }
 
-  onChangePassword(e) {
+  onChangePassword(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const errorText = this.validatePassword(inputValue);
     this.children.PasswordInputField.setProps({
@@ -148,7 +164,7 @@ export default class RegisterPage extends Block {
     });
   }
 
-  validatePassword(inputValue) {
+  validatePassword(inputValue: string) {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/;
     if (!inputValue) return "Это поле обязательно.";
     if (!passwordRegex.test(inputValue)) {
@@ -158,7 +174,10 @@ export default class RegisterPage extends Block {
     return "";
   }
 
-  onChangeLogin(e) {
+  onChangeLogin(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
     const errorText = this.validateLogin(inputValue);
     this.children.LoginInputField.setProps({
@@ -167,7 +186,7 @@ export default class RegisterPage extends Block {
     });
   }
 
-  validateLogin(inputValue) {
+  validateLogin(inputValue: string) {
     const loginRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9_-]{3,20}$/;
     if (!inputValue) return "Это поле обязательно.";
     if (!loginRegex.test(inputValue)) {
@@ -177,11 +196,28 @@ export default class RegisterPage extends Block {
     return "";
   }
 
-  onSubmit(e) {
+  onSubmit(e: Event) {
     e.preventDefault();
-    const errors = Object.keys(this.children).reduce((acc, key) => {
-      if (this.children[key].props.error) {
-        acc.push(this.children[key].props.errorText);
+
+    if (!(e.target instanceof HTMLFormElement)) {
+      console.error("Event target is not a form element.");
+      return;
+    }
+
+    const formData = new FormData(e.target);
+    const data: {[key: string]: string} = {};
+
+    formData.forEach((value, key) => {
+      if (typeof value === "string") {
+        data[key] = value;
+      }
+    });
+
+    // Check for any validation errors
+    const errors = Object.keys(this.children).reduce((acc: string[], key) => {
+      const child = this.children[key];
+      if (child.props.error) {
+        acc.push((child.props.errorText as string) || "Unknown error");
       }
       return acc;
     }, []);
@@ -191,13 +227,7 @@ export default class RegisterPage extends Block {
       return;
     }
 
-    const formData = new FormData(e.target);
-    const data = {};
-    formData.forEach((value, key) => {
-      data[key] = value;
-    });
-
-    console.log(data);
+    console.log("Form Data:", data);
   }
 
   render() {

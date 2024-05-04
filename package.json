@@ -22,7 +22,8 @@
     "lint:eslint": "eslint .",
     "lint:eslint:fix": "eslint . --fix",
     "lint:css": "stylelint '**/*.{css,scss}'",
-    "lint:css:fix": "stylelint '**/*.{css,scss}' --fix"
+    "lint:css:fix": "stylelint '**/*.{css,scss}' --fix",
+    "check:ts": "tsc --noEmit --project tsconfig.json"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.4.0",

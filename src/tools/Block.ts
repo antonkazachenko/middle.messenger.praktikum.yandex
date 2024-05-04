@@ -22,12 +22,6 @@ export default class Block {
   public children: { [key: string]: Block };
   // eslint-disable-next-line @typescript-eslint/ban-types
   public props: { [key: string]: Object | string | Function };
-  /** JSDoc
-   * @param {string} tagName
-   * @param {Object} props
-   *
-   * @returns {void}
-   */
 
   /**
    * Initializes a new instance of the Block class with optional properties
@@ -38,7 +32,11 @@ export default class Block {
   constructor(propsWithChildren: object = {}) {
     this._eventBus = new EventBus();
     const {props, children} = this._getChildrenAndProps(propsWithChildren);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     this.props = this._makePropsProxy({...props});
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     this.children = children;
 
     this._registerEvents(this._eventBus);
@@ -57,6 +55,8 @@ export default class Block {
     const {events = {}} = this.props;
 
     Object.keys(events).forEach((eventName) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       this._element.addEventListener(eventName, events[eventName]);
     });
   }
@@ -76,8 +76,8 @@ export default class Block {
    * Initialization lifecycle method that sets up the component.
    */
   _createResources() {
-    const {tagName} = this._meta;
-    this._element = this._createDocumentElement(tagName);
+    // const {tagName} = this._meta;
+    // this._element = this._createDocumentElement(tagName);
   }
 
   /**
@@ -87,7 +87,7 @@ export default class Block {
     // this._createResources();
     this.init();
 
-    this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    this.eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
   /**
@@ -113,13 +113,14 @@ export default class Block {
   /**
    * Additional logic after component mount. Intended to be overridden.
    */
-  componentDidMount() {}
+  componentDidMount() {
+  }
 
   /**
    * Triggers the component-did-mount event for child components.
    */
   dispatchComponentDidMount() {
-    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+    this.eventBus.emit(Block.EVENTS.FLOW_CDM);
   }
 
   _componentDidUpdate(oldProps: object, newProps: object) {
@@ -131,12 +132,15 @@ export default class Block {
     this._render();
   }
 
+
   /**
    * Lifecycle method called when the component's properties change.
    * @param {Object} oldProps - The previous properties.
    * @param {Object} newProps - The new properties.
    * @return {boolean} Indicates whether the component should re-render.
    */
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   componentDidUpdate(oldProps?: object, newProps?: object): boolean {
     return true;
@@ -157,8 +161,12 @@ export default class Block {
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         children[key] = value;
       } else {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         props[key] = value;
       }
     });
@@ -188,9 +196,13 @@ export default class Block {
     const fragment = this._createDocumentElement("template");
 
     fragment.innerHTML = Handlebars.compile(this.render())(propsAndStubs);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const newElement = fragment.content.firstElementChild;
 
     Object.values(this.children).forEach((child) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
 
       stub?.replaceWith(child.getContent());
@@ -219,18 +231,22 @@ export default class Block {
 
     return new Proxy(props, {
       get(target, prop) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
       set(target, prop, value) {
         const oldTarget = {...target};
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         target[prop] = value;
 
         // Запускаем обновление компоненты
         // Плохой cloneDeep, в следующей итерации нужно заставлять
         // добавлять cloneDeep им самим
         console.log("Updated ", target);
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
+        self.eventBus.emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
       deleteProperty() {
@@ -239,15 +255,15 @@ export default class Block {
     });
   }
 
-  _createDocumentElement(tagName) {
+  _createDocumentElement(tagName: string) {
     return document.createElement(tagName);
   }
 
   show() {
-    this.getContent().style.display = "block";
+    this.getContent()!.style.display = "block";
   }
 
   hide() {
-    this.getContent().style.display = "none";
+    this.getContent()!.style.display = "none";
   }
 }

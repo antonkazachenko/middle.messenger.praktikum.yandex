@@ -21,7 +21,10 @@ export default class ChatPage extends Block {
     super.init();
   }
 
-  onMessageChange(e) {
+  onMessageChange(e: Event) {
+    if (!(e.target instanceof HTMLInputElement)) {
+      return;
+    }
     const inputValue = e.target.value;
 
     if (inputValue === "") {
