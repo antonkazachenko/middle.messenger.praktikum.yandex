@@ -1,9 +1,13 @@
-// @ts-nocheck
-
 import EventBus from "./EventBus";
 import {nanoid} from "nanoid";
 import Handlebars from "handlebars";
 
+// eslint-disable-next-line valid-jsdoc
+/**
+ * Represents the base component class in a web application framework.
+ * This class provides core functionality for component lifecycle management,
+ * event handling, and rendering.
+ */
 export default class Block {
   static EVENTS = {
     INIT: "init",
@@ -12,10 +16,12 @@ export default class Block {
     FLOW_RENDER: "flow:render",
   };
 
-  _element = null;
-  _meta = null;
-  _id = nanoid(6);
-
+  private readonly _eventBus: EventBus;
+  private _element: HTMLElement | null = null;
+  private _id: string = nanoid(6);
+  public children: { [key: string]: Block };
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  public props: { [key: string]: Object | string | Function };
   /** JSDoc
    * @param {string} tagName
    * @param {Object} props
@@ -23,25 +29,30 @@ export default class Block {
    * @returns {void}
    */
 
-  private _eventbus;
-
-  constructor(propsWithChildren = {}) {
-    const eventBus = new EventBus();
-    // this._meta = {
-    //   tagName,
-    //   props
-    // };
+  /**
+   * Initializes a new instance of the Block class with optional properties
+   * and children.
+   * @param {Object} propsWithChildren - Initial properties and child
+   * components.
+   */
+  constructor(propsWithChildren: object = {}) {
+    this._eventBus = new EventBus();
     const {props, children} = this._getChildrenAndProps(propsWithChildren);
     this.props = this._makePropsProxy({...props});
     this.children = children;
 
-    this.eventBus = () => eventBus;
+    this._registerEvents(this._eventBus);
 
-    this._registerEvents(eventBus);
-
-    eventBus.emit(Block.EVENTS.INIT);
+    this._eventBus.emit(Block.EVENTS.INIT);
   }
 
+  get eventBus(): EventBus {
+    return this._eventBus;
+  }
+
+  /**
+   * Registers DOM events based on component's properties.
+   */
   _addEvents() {
     const {events = {}} = this.props;
 
@@ -50,18 +61,28 @@ export default class Block {
     });
   }
 
-  _registerEvents(eventBus) {
+  /**
+   * Registers internal component lifecycle events with the event bus.
+   * @param {EventBus} eventBus - The event bus for the component.
+   */
+  _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
+  /**
+   * Initialization lifecycle method that sets up the component.
+   */
   _createResources() {
     const {tagName} = this._meta;
     this._element = this._createDocumentElement(tagName);
   }
 
+  /**
+   * Initialization lifecycle method that sets up the component.
+   */
   _init() {
     // this._createResources();
     this.init();
@@ -69,10 +90,17 @@ export default class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
+  /**
+   * Additional initialization logic for derived classes. Intended to
+   * be overridden.
+   */
   init() {
 
   }
 
+  /**
+   * Lifecycle method called after the component is mounted to the DOM.
+   */
   _componentDidMount() {
     this.componentDidMount();
     console.log("CDM");
@@ -82,13 +110,19 @@ export default class Block {
     });
   }
 
-  componentDidMount(oldProps) {}
+  /**
+   * Additional logic after component mount. Intended to be overridden.
+   */
+  componentDidMount() {}
 
+  /**
+   * Triggers the component-did-mount event for child components.
+   */
   dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(oldProps, newProps) {
+  _componentDidUpdate(oldProps: object, newProps: object) {
     console.log("CDU");
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
@@ -97,11 +131,27 @@ export default class Block {
     this._render();
   }
 
-  componentDidUpdate(oldProps, newProps) {
+  /**
+   * Lifecycle method called when the component's properties change.
+   * @param {Object} oldProps - The previous properties.
+   * @param {Object} newProps - The new properties.
+   * @return {boolean} Indicates whether the component should re-render.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  componentDidUpdate(oldProps?: object, newProps?: object): boolean {
     return true;
   }
 
-  _getChildrenAndProps(propsAndChildren) {
+  /**
+   * Separates children components from properties.
+   * @param {Object} propsAndChildren - Combined properties and children.
+   * @return {{children: Object, props: Object}} Separated children and
+   * properties.
+   */
+  _getChildrenAndProps(propsAndChildren: object): {
+    children: object;
+    props: object;
+  } {
     const children = {};
     const props = {};
 
@@ -116,7 +166,7 @@ export default class Block {
     return {children, props};
   }
 
-  setProps = (nextProps) => {
+  setProps = (nextProps: object) => {
     if (!nextProps) {
       return;
     }
@@ -161,9 +211,10 @@ export default class Block {
     return this.element;
   }
 
-  _makePropsProxy(props) {
+  _makePropsProxy(props: object) {
     // Можно и так передать this
     // Такой способ больше не применяется с приходом ES6+
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
 
     return new Proxy(props, {
@@ -176,7 +227,8 @@ export default class Block {
         target[prop] = value;
 
         // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
+        // Плохой cloneDeep, в следующей итерации нужно заставлять
+        // добавлять cloneDeep им самим
         console.log("Updated ", target);
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;

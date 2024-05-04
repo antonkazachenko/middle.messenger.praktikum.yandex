@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function fetch(url: string, options) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();

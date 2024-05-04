@@ -1,8 +1,15 @@
 import {Button, PageSubtitle, PageTitle} from "../../components";
 import Block from "../../tools/Block";
 
+type TError500Props = {
+  PageTitle: PageTitle;
+  PageSubtitle: PageSubtitle;
+  Button: Button;
+};
+
+
 export default class Error500 extends Block {
-  constructor(props: any) {
+  constructor(props: TError500Props) {
     super({
       ...props,
       PageTitle: new PageTitle({

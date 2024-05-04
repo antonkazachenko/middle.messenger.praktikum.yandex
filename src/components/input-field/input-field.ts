@@ -2,8 +2,20 @@ import Block from "../../tools/Block";
 import ErrorLine from "../input/error-line";
 import Input from "../input/input";
 
+type TInputFieldProps = {
+  title: string;
+  name: string;
+  type?: string;
+  value?: string;
+  errorText?: string;
+  inputClassName?: string;
+  className?: string;
+  onBlur?: (event: FocusEvent) => void;
+};
+
+
 class InputField extends Block {
-  constructor(props) {
+  constructor(props: TInputFieldProps) {
     super({
       ...props,
       Input: new Input({
@@ -22,7 +34,10 @@ class InputField extends Block {
     });
   }
 
-  componentDidUpdate(oldProps: any, newProps: any): boolean {
+  componentDidUpdate(
+    oldProps: TInputFieldProps,
+    newProps: TInputFieldProps,
+  ): boolean {
     if (oldProps === newProps) {
       return false;
     }

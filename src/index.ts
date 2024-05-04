@@ -66,7 +66,7 @@ Object.entries(Components).forEach(([name, component]) => {
  * resulting HTML.
  */
 function navigate(page: Page) {
-  const [source, pageArgs = {}] = pages[page] || [];
+  const [Source, pageArgs = {}] = pages[page] || [];
   let args: PageArgs = {...pageArgs};
   switch (page) {
   case Page.Profile:
@@ -207,8 +207,8 @@ function navigate(page: Page) {
 
   const container = document.getElementById("app")!;
 
-  if (source instanceof Object) {
-    const page = new source(args);
+  if (Source instanceof Object) {
+    const page = new Source(args);
     container.innerHTML = "";
     container.append(page.getContent());
     // page.dispatchComponentDidMount();

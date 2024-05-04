@@ -1,8 +1,14 @@
 import Block from "../../tools/Block";
 import {Button, PageSubtitle, PageTitle} from "../../components";
 
+type TError404Props = {
+  PageTitle: PageTitle;
+  PageSubtitle: PageSubtitle;
+  Button: Button;
+};
+
 export default class Error404 extends Block {
-  constructor(props: any) {
+  constructor(props: TError404Props) {
     super({
       ...props,
       PageTitle: new PageTitle({

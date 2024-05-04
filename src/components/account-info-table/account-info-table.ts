@@ -3,6 +3,12 @@ import {InputField} from "../input-field";
 import {Button} from "../button";
 import {ErrorLine} from "../input";
 
+type TAccountInfoTableProps = {
+  noInput?: boolean;
+  noButton?: boolean;
+  error?: boolean;
+};
+
 export default class AccountInfoTable extends Block {
   init() {
     const onChangeEmailBind = this.onEmailChange.bind(this);
@@ -137,7 +143,10 @@ export default class AccountInfoTable extends Block {
   }
 
 
-  componentDidUpdate(oldProps: any, newProps: any): boolean {
+  componentDidUpdate(
+    oldProps: TAccountInfoTableProps,
+    newProps: TAccountInfoTableProps,
+  ): boolean {
     if (oldProps === newProps) {
       return false;
     }
