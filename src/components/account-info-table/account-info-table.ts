@@ -73,7 +73,7 @@ export default class AccountInfoTable extends Block {
       inputClassName: "profile-input",
       className: "account-info-table__field",
       title: "Фамилия",
-      name: "last_name",
+      name: "second_name",
       onBlur: onChangeLastNameBind,
     });
 
@@ -81,7 +81,7 @@ export default class AccountInfoTable extends Block {
       inputClassName: "profile-input",
       className: "account-info-table__field",
       title: "Имя в чате",
-      name: "nickname",
+      name: "display_name",
       onBlur: onChangeNickNameBind,
     });
 
