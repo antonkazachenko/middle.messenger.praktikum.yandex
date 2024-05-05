@@ -1,0 +1,15 @@
+@import '../../assets/variables';
+
+.chat-search-input {
+  width: 100%;
+  border: 1px;
+  background: none;
+  padding-left: 10px;
+  color: rgb(255 255 255 / 79%);
+  font: $font-regular
+}
+
+.chat-search-icon {
+  width: 32px;
+  height: 28px;
+}
