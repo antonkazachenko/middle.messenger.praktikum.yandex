@@ -10,4 +10,8 @@
   color: $button-color;
   border: 0;
   cursor: pointer;
+
+  &__margin {
+    margin-top: 40px;
+  }
 }

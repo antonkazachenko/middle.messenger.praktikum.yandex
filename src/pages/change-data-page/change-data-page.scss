@@ -1,0 +1,38 @@
+@import '../../assets/variables';
+
+.profile-page {
+  width: 400px;
+  height: 390px;
+  display: flex;
+  margin-top: -3vh;
+  flex-direction: column;
+
+  &__content {
+    flex: 1;
+    gap: 20px
+  }
+
+  &__show-password {
+    margin: 25px 0 80px;
+  }
+
+  &__input {
+    margin-top: 30px;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6vh;
+    gap: 30px;
+  }
+
+  &__title-margin {
+    font: $font-big;
+    text-decoration: underline;
+    margin-bottom: 50px;
+    text-underline-offset: 5px;
+    text-decoration-color: #D0D0D0;
+    text-decoration-thickness: 1px;
+  }
+}

@@ -1,8 +1,27 @@
 <div class="chat-page">
-  {{#> ChatList className="chat-page__list" }}
-    {{#each (chat-page-list)}}
-      {{> ChatItem }}
-    {{/each}}
-  {{/ ChatList }}
-  {{> Link page="LoginPage" text="Назад к логину"}}
+  <div class="chat-page__messages">
+    <div class="chat-page__messages-profile">
+      <div class="chat-page__messages-profile-title">
+        <p class="chat-page__messages-profile-text">
+          Профиль
+        </p>
+      </div>
+      {{> ArrowIcon }}
+    </div>
+    <div class="chat-page__messages-profile-input">
+      {{> ChatSearchInput }}
+    </div>
+    {{#> ChatList className="chat-page__messages-list" }}
+      {{#each (chat-page-list)}}
+        {{> ChatItem }}
+      {{/each}}
+    {{/ ChatList }}
+  </div>
+  <div class="chat-page__main">
+    <div class="chat-page__main-stub">
+      <span class="chat-page__main-text">
+        Выберите чат чтобы отправить сообщение
+      </span>
+    </div>
+  </div>
 </div>

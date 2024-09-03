@@ -10,6 +10,12 @@
 [![Версия Handlebars](https://img.shields.io/badge/Handlebars-4.7.7-brightgreen)](https://handlebarsjs.com/)
 [![Версия SCSS](https://img.shields.io/badge/SCSS-1.35.1-brightgreen)](https://sass-lang.com/)
 
+Для смены страниц необходимо в файле `src/index.ts` на строке 24 в функции `navigate` поменять значение на определенную страницу из объекта `pages`.
+
+На данный момент переходы по страницам убрал тк он сабмит не проверить. На странице чата оставил заглушку инпут так как хочу потом добавлять инпут только по нажатию на чат (как в телеграме)
+
+Ccылка чтобы увидеть макеты страниц: [Figma](https://www.figma.com/file/NtGbsAjBjIqx331WIW2m5L/Chat_external_link-(Copy)-(Copy)?type=design&mode=design&t=cmgWGWCVjHQyTQxr-1)
+
 Web Chat — это динамичное веб-приложение для обмена сообщениями, которое позволяет пользователям взаимодействовать друг с другом в реальном времени. Созданное с использованием Vite, Handlebars и SCSS, это приложение предлагает бесперебойный опыт обмена сообщениями с такими функциями, как авторизация, регистрация, функции мессенджера и обновления профилей.
 
 Приложение задеплоено на Netlify. Функция непрерывного развертывания Netlify автоматизирует процесс развертывания, позволяя мгновенно обновлять приложение с каждым новым коммитом в репозиторий.
@@ -23,8 +29,8 @@ Web Chat — это динамичное веб-приложение для об
 Клонируйте репозиторий:
 
 ```bash
-git clone https://yourrepositoryurl.com/middle-frontend-chat.git
-cd middle-frontend-chat
+git clone git@github.com:creamlaflare/middle.messenger.praktikum.yandex.git
+cd middle.messenger.praktikum.yandex
 ```
 Установите зависимости:
 ```bash
@@ -32,7 +38,7 @@ npm install
 ```
 Для запуска сервера разработки:
 ```bash
-npm run dev
+npm run start
 ```
 это запустит сервер разработки Vite на localhost:3000.
 
