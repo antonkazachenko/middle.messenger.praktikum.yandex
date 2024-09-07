@@ -116,6 +116,8 @@ export default class LoginPage extends Block {
     }
 
     console.log("Form Data:", data);
+
+    window.router.go("/chat");
   }
 
 

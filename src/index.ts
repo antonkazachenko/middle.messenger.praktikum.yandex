@@ -2,7 +2,15 @@ import Handlebars from "handlebars";
 import * as Components from "./components";
 import * as Pages from "./pages";
 import {Page, PageClass} from "./types";
-// import {ChatPage} from "./main";
+import {Router} from "./tools/Router";
+// import { ChatPage } from "./main";
+
+// Define the router globally
+declare global {
+  interface Window {
+    router: Router;
+  }
+}
 
 const pages: Record<Page, [string | PageClass, PageArgs?]> = {
   [Page.Chat]: [Pages.ChatPage],
@@ -39,41 +47,16 @@ Object.entries(Components).forEach(([name, component]) => {
   Handlebars.registerPartial(name, component);
 });
 
-/**
- * Navigates to the specified page and renders its content using Handlebars
- * templates. This function determines the appropriate content and template
- * for the given page, compiles the Handlebars template, and updates the
- * document body with the rendered HTML. Specific page behavior and content
- * are defined by case statements that configure page-specific arguments
- * for the template.
- *
- * @param {string} page - The key identifying the page to navigate to. This key
- *                        should correspond to one of the keys in the 'pages'
- *                        object, which maps page identifiers to their
- *                        respective [PageComponent, pageArgs] tuples.
- *
- * Supported pages include:
- * - "chat": Navigates to the chat page.
- * - "login": Navigates to the login page.
- * - "register": Navigates to the registration page.
- * - "error-404": Navigates to the 404 error page.
- * - "error-500": Navigates to the 500 error page.
- * - "profile": Navigates to the user profile page.
- * - "change-password": Navigates to the change password page.
- * - "change-data": Navigates to the change user data page.
- *
- * The function adjusts the page's content and configuration based on the page
- * argument, setting up necessary data and parameters for rendering. It then
- * compiles the Handlebars template and updates the document body with the
- * resulting HTML.
- */
-function navigate(page: Page) {
-  const [Source, pageArgs = {}] = pages[page] || [];
-  let args: PageArgs = {...pageArgs};
-  switch (page) {
-  case Page.Profile:
-    args = {
-      ...pageArgs,
+document.addEventListener("DOMContentLoaded", () => {
+  window.router = new Router(".app"); // Set global router variable
+
+  window.router
+    .use("/chat", Pages.ChatPage)
+    .use("/login", Pages.LoginPage)
+    .use("/register", Pages.RegisterPage)
+    .use("/error-404", Pages.Error404)
+    .use("/error-500", Pages.Error500)
+    .use("/profile", Pages.ProfilePage, {
       menuItems: [
         {linkText: "Изменить данные", link: "change-data"},
         {linkText: "Изменить пароль", link: "change-password"},
@@ -117,11 +100,8 @@ function navigate(page: Page) {
           input: false,
         },
       ],
-    };
-    break;
-  case Page.ChangePassword:
-    args = {
-      ...pageArgs,
+    })
+    .use("/change-password", Pages.ChangePasswordPage, {
       menuItems: [
         {linkText: "Изменить данные", link: "change-data"},
         {linkText: "Изменить пароль", link: "change-password"},
@@ -149,11 +129,8 @@ function navigate(page: Page) {
           input: true,
         },
       ],
-    };
-    break;
-  case Page.ChangeData:
-    args = {
-      ...pageArgs,
+    })
+    .use("/change-data", Pages.ChangeDataPage, {
       menuItems: [
         {linkText: "Изменить данные", link: "change-data"},
         {linkText: "Изменить пароль", link: "change-password"},
@@ -203,54 +180,8 @@ function navigate(page: Page) {
           input: true,
         },
       ],
-    };
-    break;
-  }
+    })
+    .start();
 
-  const container = document.getElementById("app")!;
-
-  if (Source instanceof Object) {
-    const page = new Source(args);
-    container.innerHTML = "";
-    container.append(page.getContent()!);
-    // page.dispatchComponentDidMount();
-    return;
-  }
-
-  const handlebarsFunct = Handlebars.compile(Source);
-  document.body.innerHTML = handlebarsFunct(args);
-  // if (page === Page.Chat) {
-  //   block = new ChatPage({});
-  //   container = document.querySelector(".chat-page");
-  //   if (!container) {
-  //     throw new Error("No chat container found");
-  //   }
-  //   container.append(block.getContent()!);
-  // }
-}
-
-document.addEventListener("DOMContentLoaded",
-  () => navigate(Page.ChangePassword));
-
-document.addEventListener("click", (e) => {
-  const target = e.target as HTMLElement;
-  const page = target.getAttribute("page") as Page | null;
-  if (page) {
-    // navigate(page);
-    const app = document.getElementById("app")!;
-    const chatPage = app.querySelector(".chat-page");
-
-    if (chatPage) {
-      app.classList.add("has-chat-page");
-    }
-  }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-  const app = document.getElementById("app")!;
-  const chatPage = app.querySelector(".chat-page");
-
-  if (chatPage) {
-    app.classList.add("has-chat-page");
-  }
+  window.router.go("/chat");
 });
