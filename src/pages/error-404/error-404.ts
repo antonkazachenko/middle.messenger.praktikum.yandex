@@ -29,7 +29,8 @@ export default class Error404 extends Block {
 
   render(): string {
     return `
-      <div class="error-wrapper">
+      <div class="login-page__background">
+        <div class="error-wrapper">
         <div class="error-404">
           <div class="error-404__content">
             <div class="error-404__title-margin">
@@ -54,6 +55,7 @@ export default class Error404 extends Block {
             class="error-404__image"
           />
         </div>
+      </div>
       </div>
     `;
   }

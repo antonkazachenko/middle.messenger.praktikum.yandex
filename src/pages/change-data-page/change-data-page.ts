@@ -22,6 +22,7 @@ export default class ChangeDataPage extends Block {
 
   render() {
     return `
+        <div class="login-page__background">
           <div class="profile-page">
            <div class="profile-page__content">
              <div class="profile-page__title-margin">
@@ -31,6 +32,7 @@ export default class ChangeDataPage extends Block {
              {{{ AccInfoTableInputs }}}
            </div>
          </div>
+        </div>
     `;
   }
 }

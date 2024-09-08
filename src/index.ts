@@ -1,28 +1,12 @@
 import Handlebars from "handlebars";
 import * as Components from "./components";
 import * as Pages from "./pages";
-import {Page, PageClass} from "./types";
 import {Router} from "./tools/Router";
-// import { ChatPage } from "./main";
 
-// Define the router globally
 declare global {
   interface Window {
     router: Router;
   }
-}
-
-interface MenuItem {
-  linkText: string;
-  link: string;
-}
-
-interface Field {
-  id: string;
-  label: string;
-  value: string;
-  input: boolean;
-  name?: string;
 }
 
 
@@ -33,7 +17,7 @@ Object.entries(Components).forEach(([name, component]) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  window.router = new Router(".app"); // Set global router variable
+  window.router = new Router(".app");
 
   window.router
     .use("/chat", Pages.ChatPage)
@@ -168,5 +152,5 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .start();
 
-  window.router.go("/register");
+  window.router.go("/login");
 });

@@ -1,15 +1,15 @@
 @import '../../assets/variables';
 
 .profile-page {
-  width: 400px;
-  height: 390px;
   display: flex;
-  margin-top: -3vh;
   flex-direction: column;
+  justify-content: center;
+  background-color: rgb(58 58 58 / 30%);
+  height: 95%;
+  padding-left: 10%;
+  width: 50%;
 
     &__content {
-      flex: 1;
-      gap: 20px
     }
 
     &__show-password {

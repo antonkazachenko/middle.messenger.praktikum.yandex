@@ -156,7 +156,8 @@ export default class ChangePasswordPage extends Block {
 
   render() {
     return `
-      <form class="profile-page">
+      <div class="login-page__background">
+        <form class="profile-page">
         <div class="profile-page__content">
           {{{ AccInfoCard }}}
           {{{ InputOldPassword }}}
@@ -166,6 +167,7 @@ export default class ChangePasswordPage extends Block {
           {{{ ErrorLine }}}
         </div>
       </form>
+      </div>
     `;
   }
 }

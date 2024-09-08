@@ -29,7 +29,8 @@ export default class ProfilePage extends Block {
   }
   render() {
     return `
-      <div class="profile-page">
+      <div class="login-page__background">
+        <div class="profile-page">
         <div class="profile-page__content">
           <div class="profile-page__title-margin">
             Профиль
@@ -40,6 +41,7 @@ export default class ProfilePage extends Block {
         <div class="profile-page__footer">
           {{{ ChangeProfileSection }}}
         </div>
+      </div>
       </div>
     `;
   }

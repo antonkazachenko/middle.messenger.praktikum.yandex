@@ -30,7 +30,8 @@ export default class Error500 extends Block {
 
   render(): string {
     return `
-      <div class="error-wrapper">
+      <div class="login-page__background">
+        <div class="error-wrapper">
         <div class="error-500">
           <div class="error-500__content">
             <div class="error-500__title-margin">
@@ -55,6 +56,7 @@ export default class Error500 extends Block {
             class="error-500__image"
           />
         </div>
+      </div>
       </div>
     `;
   }
