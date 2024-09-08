@@ -12,17 +12,6 @@ declare global {
   }
 }
 
-const pages: Record<Page, [string | PageClass, PageArgs?]> = {
-  [Page.Chat]: [Pages.ChatPage],
-  [Page.Login]: [Pages.LoginPage],
-  [Page.Register]: [Pages.RegisterPage],
-  [Page.Error404]: [Pages.Error404],
-  [Page.Error500]: [Pages.Error500],
-  [Page.Profile]: [Pages.ProfilePage],
-  [Page.ChangePassword]: [Pages.ChangePasswordPage],
-  [Page.ChangeData]: [Pages.ChangeDataPage],
-};
-
 interface MenuItem {
   linkText: string;
   link: string;
@@ -36,10 +25,6 @@ interface Field {
   name?: string;
 }
 
-interface PageArgs {
-  menuItems?: MenuItem[];
-  fields?: Field[];
-}
 
 Object.entries(Components).forEach(([name, component]) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -183,5 +168,5 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .start();
 
-  window.router.go("/chat");
+  window.router.go("/login");
 });

@@ -123,6 +123,7 @@ export default class LoginPage extends Block {
 
   render() {
     return `
+      <div class="login-page__background">
         <form class="login-page">
           <div class="login-page__content">
             <div class="login-page__title-margin">
@@ -147,6 +148,7 @@ export default class LoginPage extends Block {
             {{{ LoginPageSubtitle }}}
           </div>
         </form>
+      </div>
     `;
   }
 }
