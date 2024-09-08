@@ -13,8 +13,8 @@ type TFormFields = {
   email: string;
   login: string;
   first_name: string;
-  last_name: string;
-  nickname: string;
+  second_name: string;
+  display_name: string;
   phone: string;
 };
 
@@ -23,8 +23,8 @@ interface IFormElements extends HTMLFormElement {
     email: HTMLInputElement;
     login: HTMLInputElement;
     first_name: HTMLInputElement;
-    last_name: HTMLInputElement;
-    nickname: HTMLInputElement;
+    second_name: HTMLInputElement;
+    display_name: HTMLInputElement;
     phone: HTMLInputElement;
   }
 }
@@ -297,16 +297,16 @@ export default class AccountInfoTable extends Block {
       email: "",
       login: "",
       first_name: "",
-      last_name: "",
-      nickname: "",
+      second_name: "",
+      display_name: "",
       phone: "",
     };
     const errors: TFormFields = {
       email: "",
       login: "",
       first_name: "",
-      last_name: "",
-      nickname: "",
+      second_name: "",
+      display_name: "",
       phone: "",
     };
     if (!(e.target instanceof HTMLFormElement)) {
@@ -316,15 +316,15 @@ export default class AccountInfoTable extends Block {
     data.email = form.elements.email.value;
     data.login = form.elements.login.value;
     data.first_name = form.elements.first_name.value;
-    data.last_name = form.elements.last_name.value;
-    data.nickname = form.elements.nickname.value;
+    data.second_name = form.elements.second_name.value;
+    data.display_name = form.elements.display_name.value;
     data.phone = form.elements.phone.value;
 
     errors.email = this.validateEmail(data.email);
     errors.login = this.validateLogin(data.login);
     errors.first_name = this.validateFirstName(data.first_name);
-    errors.last_name = this.validateLastName(data.last_name);
-    errors.nickname = this.validateNickname(data.nickname);
+    errors.second_name = this.validateLastName(data.second_name);
+    errors.display_name = this.validateNickname(data.display_name);
     errors.phone = this.validatePhone(data.phone);
 
     const isErrorPresent =
@@ -342,6 +342,7 @@ export default class AccountInfoTable extends Block {
         errorText: "",
       });
       console.log(data);
+      window.router.go("/profile");
     }
   }
 

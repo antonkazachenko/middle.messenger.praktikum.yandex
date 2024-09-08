@@ -1,6 +1,7 @@
 import Block from "../../tools/Block";
 import ChatMessageInput
   from "../../components/chat-message-input/chat-message-input";
+import {Link} from "../../components";
 
 export default class ChatPage extends Block {
   init() {
@@ -16,6 +17,16 @@ export default class ChatPage extends Block {
     this.children = {
       ...this.children,
       ChatMessageInputComponent,
+      ProfileLink: new Link({
+        text: "Профиль",
+        page: "profile",
+        className: "chat-page__messages-profile-text",
+        events: {
+          click: () => {
+            window.router.go("/profile");
+          },
+        },
+      }),
     };
 
     super.init();
@@ -44,9 +55,7 @@ export default class ChatPage extends Block {
         <div class="chat-page__messages">
           <div class="chat-page__messages-profile">
             <div class="chat-page__messages-profile-title">
-              <p class="chat-page__messages-profile-text">
-                Профиль
-              </p>
+              {{{ ProfileLink }}}
             </div>
             {{> ArrowIcon }}
           </div>

@@ -151,6 +151,4 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
     })
     .start();
-
-  window.router.go("/profile");
 });

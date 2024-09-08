@@ -151,6 +151,8 @@ export default class ChangePasswordPage extends Block {
     });
 
     console.log(data);
+
+    window.router.go("/profile");
   }
 
 
