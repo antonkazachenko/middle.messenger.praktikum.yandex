@@ -13,10 +13,14 @@ export default class PageSubtitle extends Block {
     super({
       ...props,
       Link: new Link({
+        events: {
+          click: () => {
+            window.router.go(`/${this.props.link}`);
+          },
+        },
         page: props.link,
         text: props.linkText,
         className: "login-page__page-subtitle-link",
-        url: "#",
       }),
     });
   }

@@ -4,7 +4,9 @@ type TLinkProps = {
   text: string;
   page: string;
   className: string;
-  url?: string;
+  events: {
+    click: (event: MouseEvent) => void;
+  };
 };
 
 export default class Link extends Block {
@@ -12,10 +14,10 @@ export default class Link extends Block {
     super(props);
   }
 
+
   render() {
     return `
       <a
-        href="{{ url }}"
         class="{{className}}"
         page="{{ page }}"
       >

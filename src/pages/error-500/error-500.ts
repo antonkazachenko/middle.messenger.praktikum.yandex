@@ -24,6 +24,11 @@ export default class Error500 extends Block {
       Button: new Button({
         text: "Вернуться назад",
         page: "chat",
+        events: {
+          click: () => {
+            window.router.go("/chat");
+          },
+        },
       }),
     });
   }

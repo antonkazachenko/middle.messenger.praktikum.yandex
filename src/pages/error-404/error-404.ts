@@ -23,6 +23,11 @@ export default class Error404 extends Block {
       Button: new Button({
         text: "Вернуться назад",
         page: "chat",
+        events: {
+          click: () => {
+            window.router.go("/chat");
+          },
+        },
       }),
     });
   }

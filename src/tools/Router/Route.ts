@@ -21,10 +21,8 @@ export class Route {
   }
 
   navigate(pathname: string) {
-    if (this.match(pathname)) {
-      this._pathname = pathname;
-      this.render();
-    }
+    this._pathname = pathname;
+    this.render();
   }
 
   leave() {
@@ -47,12 +45,14 @@ export class Route {
     }
 
     if (!this._block) {
+      // Create the block if it doesn't exist
       this._block = new this._blockClass(this._props);
-      this._block?.render();
-      container.innerHTML = "";
-      container.append(this._block.getContent()!);
     } else {
-      this._block.show();
+      // If the block exists, re-render its content
+      this._block.setProps(this._props); // Update props if necessary
     }
+
+    container.innerHTML = "";
+    container.append(this._block.getContent()!);
   }
 }

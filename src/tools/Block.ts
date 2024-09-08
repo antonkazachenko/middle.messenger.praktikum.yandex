@@ -174,13 +174,17 @@ export default class Block {
     return {children, props};
   }
 
-  setProps = (nextProps: object) => {
+  setProps(nextProps: object) {
     if (!nextProps) {
       return;
     }
 
+    const oldProps = {...this.props};
     Object.assign(this.props, nextProps);
-  };
+
+    this.eventBus.emit(Block.EVENTS.FLOW_CDU, oldProps, this.props);
+  }
+
 
   get element() {
     return this._element;
@@ -260,7 +264,7 @@ export default class Block {
   }
 
   show() {
-    // this.getContent()!.style.display = "block";
+    this.getContent()!.style.display = "show";
   }
 
   hide() {

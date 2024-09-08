@@ -4,6 +4,9 @@ type TButtonProps = {
   className?: string;
   text: string;
   page: string;
+  events?: {
+    click: (event: MouseEvent) => void;
+  };
 };
 
 export default class Button extends Block {

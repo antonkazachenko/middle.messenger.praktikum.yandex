@@ -225,6 +225,8 @@ export default class RegisterPage extends Block {
     if (errors.length > 0) {
       console.log("Errors:", errors);
       return;
+    } else {
+      window.router.go("login");
     }
 
     console.log("Form Data:", data);
