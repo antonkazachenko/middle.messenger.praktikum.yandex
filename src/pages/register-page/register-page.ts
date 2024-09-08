@@ -232,35 +232,37 @@ export default class RegisterPage extends Block {
 
   render() {
     return `
-      <form class="register-page">
-        <div class="register-page__content">
-          {{{ RegisterPageTitle }}}
-          {{{ RegisterPageSubtitle }}}
-          <div class="register-page__two-inputs">
-            {{{ FirstNameInputField }}}
-            {{{ LastNameInputField }}}
+      <div class="login-page__background">
+        <form class="register-page">
+          <div class="register-page__content">
+            {{{ RegisterPageTitle }}}
+            {{{ RegisterPageSubtitle }}}
+            <div class="register-page__two-inputs">
+              {{{ FirstNameInputField }}}
+              {{{ LastNameInputField }}}
+            </div>
+            <div class="register-page__two-inputs">
+              {{{ LoginInputField }}}
+              {{{ PhoneInputField }}}
+            </div>
+            {{{ EmailInputField }}}
+            <div class="register-page__two-inputs">
+              {{{ PasswordInputField }}}
+              {{{ RepeatPasswordInputField }}}
+            </div>
           </div>
-          <div class="register-page__two-inputs">
-            {{{ LoginInputField }}}
-            {{{ PhoneInputField }}}
+          <div class="register-page__show-password">
+            <label class="control control-checkbox">
+              Показать пароль
+              <input type="checkbox" />
+              <div class="control-indicator"></div>
+            </label>
           </div>
-          {{{ EmailInputField }}}
-          <div class="register-page__two-inputs">
-            {{{ PasswordInputField }}}
-            {{{ RepeatPasswordInputField }}}
+          <div class="register-page__footer">
+            {{{ RegisterButton  }}}
           </div>
-        </div>
-        <div class="register-page__show-password">
-          <label class="control control-checkbox">
-            Показать пароль
-            <input type="checkbox" />
-            <div class="control-indicator"></div>
-          </label>
-        </div>
-        <div class="register-page__footer">
-          {{{ RegisterButton  }}}
-        </div>
-      </form>
+        </form>
+      </<div>
     `;
   }
 }

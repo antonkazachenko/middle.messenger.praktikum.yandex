@@ -168,5 +168,5 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .start();
 
-  window.router.go("/login");
+  window.router.go("/register");
 });

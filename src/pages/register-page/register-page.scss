@@ -1,14 +1,16 @@
 @import '../../assets/variables';
 
 .register-page {
-  width: 669px;
-  height: 390px;
-  margin-top: -6vh;
+  background-color: rgb(58 58 58 / 30%);
   display: flex;
+  width: 50%;
+  padding-left: 10%;
   flex-direction: column;
+  height: 95%;
+  align-items: flex-start;
+  justify-content: center;
 
     &__content {
-      flex: 1;
     }
 
     &__input {
