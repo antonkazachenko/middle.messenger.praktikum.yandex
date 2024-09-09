@@ -47,6 +47,7 @@ class HTTPTransport {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open(method, url);
+      xhr.setRequestHeader("Content-Type", "application/json");
 
       xhr.onload = function() {
         resolve(xhr);
@@ -64,3 +65,5 @@ class HTTPTransport {
     });
   }
 }
+
+export default HTTPTransport;

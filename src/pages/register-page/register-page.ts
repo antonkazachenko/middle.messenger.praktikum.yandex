@@ -1,5 +1,6 @@
 import Block from "../../tools/Block";
 import {Button, InputField, PageSubtitle, PageTitle} from "../../components";
+import HTTPTransport from "../../tools/fetch";
 
 
 export default class RegisterPage extends Block {
@@ -225,11 +226,20 @@ export default class RegisterPage extends Block {
     if (errors.length > 0) {
       console.log("Errors:", errors);
       return;
-    } else {
-      window.router.go("login");
     }
 
     console.log("Form Data:", data);
+
+    new HTTPTransport().post("https://ya-praktikum.tech/api/v2/auth/signup", {
+      data: JSON.stringify(data),
+    }).then((res) => {
+      console.log("Response:", res);
+      if (res.status !== 200) {
+        console.error("Registration failed.");
+        return;
+      }
+      window.router.go("/chat");
+    });
   }
 
   render() {
